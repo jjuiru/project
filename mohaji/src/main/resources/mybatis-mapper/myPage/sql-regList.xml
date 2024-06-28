@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.team1.mohaji.mapper.myPage.RegListMapper">
+
+    <resultMap id="regList" type="com.team1.mohaji.dto.myPage.RegListDto">
+        <result property="memberId" column="member_id" />
+        <result property="subId" column="sub_id" />
+        <result property="rcStat" column="rc_stat" />
+        <result property="rcProgress" column="rc_progress" />
+        <result property="subName" column="sub_name" />
+        <result property="subType" column="sub_type" />
+        <result property="subScount" column="sub_scount" />
+        <result property="subSdate" column="sub_sdate" />
+        <result property="subEdate" column="sub_edate" />
+    </resultMap>
+
+    <resultMap id="credit" type="com.team1.mohaji.dto.myPage.CreditDto">
+        <result property="progressing" column="progressing" />
+        <result property="completion" column="completion" />
+
+    </resultMap>
+
+        <!-- 다른 필드들에 대한 매핑 추가 -->
+
+    <select id="selectRegList" parameterType="int" resultMap="regList">
+<![CDATA[
+        SELECT
+            rc.sub_id,
+            rc.member_id,
+            rc.rc_stat,
+            Least((
+                -- 전체 차시 수 나누기 (rs_progress가 100인 레코드의 수) * 100
+                SELECT COUNT(*)
+                FROM reg_session rs
+                WHERE rs.sub_id = rc.sub_id
+                  AND rs.member_id = rc.member_id
+                  AND rs.rs_progress = 100
+            ) / s.sub_scount * 100, 100) AS rc_progress,
+            s.sub_name,
+            s.sub_type,
+            s.sub_scount,
+            DATE_FORMAT(s.sub_sdate, '%Y-%m-%d') AS sub_sdate,
+            DATE_FORMAT(s.sub_edate, '%Y-%m-%d') AS sub_edate
+        FROM
+            reg_course rc
+                JOIN subject s ON rc.sub_id = s.sub_id
+        WHERE
+            rc.member_id = #{memberId}
+          AND rc.rc_stat = '수강중'  -- 이 조건을 추가하여 '수강중'인 데이터만 조회
+          AND s.sub_sdate <= NOW()
+          AND NOW() <= s.sub_edate;
+        ]]>
+</select>
+
+    <select id="selectCredits" parameterType="int" resultMap="credit">
+        <![CDATA[
+        SELECT
+            SUM(CASE WHEN rc.rc_stat = '수강중' THEN s.sub_credit ELSE 0 END) AS progressing,
+            SUM(CASE WHEN rc.rc_stat = '이수' THEN s.sub_credit ELSE 0 END) AS completion
+        FROM
+            reg_course rc
+                JOIN
+            subject s ON rc.sub_id = s.sub_id
+        WHERE
+            rc.member_id = #{memberId};
+        ]]>
+    </select>
+
+</mapper>

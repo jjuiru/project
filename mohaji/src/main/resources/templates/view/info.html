@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>info</title>
+
+    <link rel="stylesheet" href="/css/common/common.css" />
+    <link rel="stylesheet" href="/css/common/sectionCss.css" />
+</head>
+<body>
+<header>
+    <!-- 상단 네비바 삽입 -->
+    <header th:replace="~{layout/header :: header}"></header>
+</header>
+
+<!-- aside와 main을 포함한 container1을 flexbox로 만들어 둘을 가로로 나란히 배치 -->
+<div class="container1">
+    <main>
+<!--        &lt;!&ndash; 세컨드 타이틀 필요없을시 삭제 &ndash;&gt;-->
+<!--        <div class="miniNavi">-->
+<!--            <h1>MOHAJI LMS</h1>-->
+<!--        </div>-->
+        <img src="/img/main/info.jpg" style="display: block; margin: 0 auto; width: 1000px;">
+
+    </main>
+
+    <footer>
+        <!-- 푸터 삽입 필요없을시 삭제 -->
+        <footer th:replace="~{layout/footer :: footer}"></footer>
+    </footer>
+</div>
+</body>
+</html>

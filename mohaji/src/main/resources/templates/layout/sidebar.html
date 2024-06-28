@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<th:block th:fragment="sidebar">
+  <head>
+
+    <meta charset="UTF-8" />
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+    <meta name="language" content="ko" />
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE11" />
+    <meta
+      id="viewport"
+      name="viewport"
+      content="width=device-width, height=device-height, user-scalable=no, initial-scale=1, minimum-scale=1"
+    />
+
+    <title>sidebar</title>
+    <link type="text/css" rel="stylesheet" href="/css/common/sidebar.css" />
+    <link rel="stylesheet" type="text/css" href="/css/common/board.css" />
+    <link rel="stylesheet" type="text/css" href="/css/common/layer.css" />
+    <link rel="stylesheet" type="text/css" href="/css/common/basic.css" />
+  </head>
+  <body>
+    <div class="lnb">
+      <div class="title">
+        <h3 class="menu2" style="cursor: pointer" onclick="mnuUrlGo('')">
+          <span>마이페이지</span>
+        </h3>
+      </div>
+      <!-- menu_list -->
+      <div class="menu_list">
+        <ul>
+          <li class="depth">
+            <a> 수강 강의 </a>
+            <ul>
+              <li>
+                <a href="/myPage/regList"> 수강중인 강의 </a>
+              </li>
+              <li>
+                <a href="/myPage/regStudy"> 학습 현황 </a>
+              </li>
+            </ul>
+          </li>
+          <li class="depth">
+            <a> 수강 이력</a>
+            <ul>
+              <li>
+                <a href="/myPage/regInfo"> 수강 현황 </a>
+              </li>
+              <li>
+                <a href="/myPage/regResult"> 나의 성적 </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="depth">
+            <a> 내 정보 </a>
+
+            <ul>
+              <li>
+                <a href="/myPage/myPC"> 내 PC 등록 </a>
+              </li>
+              <li>
+                <a href="/myPage/userInfo"> 회원정보 수정 </a>
+              </li>
+<!--              <li>-->
+<!--                <a href="/myPage/userPsUpdate"> 비밀번호 수정 </a>-->
+<!--              </li>-->
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <!-- //menu_list -->
+    </div>
+  </body>
+</th:block>
+</html>

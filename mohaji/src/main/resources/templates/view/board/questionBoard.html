@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>커뮤니티</title>
+    <link rel="stylesheet" href="css/common/common.css" />
+    <link rel="stylesheet" href="css/common/sectionCss.css" />
+    <!-- 부트스트랩 CDN 추가 -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script>
+        function submitWriteForm(boardId) {
+            document.getElementById('boardId').value = boardId;
+            document.getElementById('writeForm').submit();
+        }
+    </script>
+
+</head>
+<body>
+<header>
+    <!-- 상단 네비바 삽입 -->
+    <header th:replace="~{layout/header :: header}"></header>
+</header>
+
+<!-- aside와 main을 포함한 container1을 flexbox로 만들어 둘을 가로로 나란히 배치 -->
+<div class="container1">
+
+    <aside>
+        <!-- 사이드바 삽입 -->
+        <nav th:replace="~{layout/boardside :: boardside}"></nav>
+    </aside>
+
+    <main style="height: 1000px;">
+        <!-- 컨텐츠 삽입 -->
+        <div class="miniNavi">
+            <h1>QnA 게시판</h1>
+        </div>
+
+        <!-- 검색 폼 추가 -->
+        <form method="get" action="/search" class="form-inline mb-3">
+            <input type="hidden" name="board" value="3">
+            <input class="form-control mr-sm-2" type="search" name="query" placeholder="검색어 입력" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">검색</button>
+        </form>
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">글번호</th>
+                <th scope="col">작성자</th>
+                <th scope="col">제목</th>
+                <th scope="col">조회수</th>
+                <th scope="col">작성일</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="post : ${posts}">
+                <td th:text="${post.sequenceNumber}"></td>
+                <td th:text="${post.memberName}"></td>
+                <td class="title">
+                    <a th:href="@{/postDetail(postId=${post.postId})}" th:text="${post.title}"></a></td>
+                <td th:text="${post.views}"></td>
+                <td th:text="${#temporals.format(post.createdAt, 'yyyy-MM-dd HH:mm')}"></td>
+            </tr>
+            </tbody>
+        </table>
+
+        <form id="writeForm" method="post" action="/write">
+            <input type="hidden" id="boardId" name="boardId">
+            <button type="button" id="write" title="글작성" onclick="submitWriteForm(3)" class="btn btn-primary">글작성</button>
+        </form>
+
+    </main>
+
+    <footer>
+        <!-- 푸터 삽입 -->
+        <footer th:replace="~{layout/footer :: footer}"></footer>
+    </footer>
+</div>
+</body>
+</html>

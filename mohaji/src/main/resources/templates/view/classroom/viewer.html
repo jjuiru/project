@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" type="text/css" href="/css/common/basic.css" />
+  <link rel="stylesheet" type="text/css" href="/css/common/board.css" />
+  <link rel="stylesheet" type="text/css" href="/css/common/layer.css" />
+  <script src="https://www.youtube.com/iframe_api"></script>
+</head>
+<body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<form id="form1" name="form1" method="POST">
+  <input type="hidden" id="sub_id" name="sub_id" th:value="${viewer.subId}"/>
+  <input type="hidden" id="session_id" name="session_id" th:value="${viewer.sessionId}"/>
+  <input type="hidden" id="member_id" name="member_id" th:value="${viewer.memberId}"/>
+  <input type="hidden" id="rs_final" name="rs_final" th:value="${viewer.rsFinal}"/>
+  <input type="hidden" id="rs_max" name="rs_max" th:value="${viewer.rsMax}"/>
+</form>
+
+<div class="study_warp">
+  <div class="study_top">
+    <div class="tit_txt">
+      <span th:text="${viewer.subName}"></span>
+    </div>
+    <a href="javascript:history.back()">
+      <span class="btn_out">
+        <img src="/img/classroom/study_icon02.png" alt="나가기">나가기
+      </span>
+    </a>
+    <a href="#"><span class="btn_out"><img src="/img/classroom/study_icon01.png" alt="오류신고">오류신고</span></a>
+  </div>
+
+  <ul class="study_con">
+    <li>
+      <div class="top_tit">
+        <span th:text="${viewer.sessionSnum} + '차시: ' + ${viewer.sessionTitle}"></span>
+      </div>
+
+      <div class="contents">
+        <iframe id="player" type="text/html" width="100%" height="100%" th:src="'https://www.youtube.com/embed/'+${viewer.videoYcode}+'?enablejsapi=1'" allowfullscreen frameborder="0"></iframe>
+      </div>
+
+      <div class="bottom_num">
+      </div>
+    </li>
+    <li>
+      <dl class="ban01">
+        <a href="javascript:Notice()"><dd><img src="/img/classroom/study_icon03.png" alt="공지사항"><p>공지사항</p></dd></a>
+        <a href="javascript:Qna()"><dd><img src="/img/classroom/study_icon04.png" alt="Q&A"><p>Q&A</p></dd></a>
+        <a href="javascript:Pds()"><dd><img src="/img/classroom/study_icon05.png" alt="학습자료실"><p>학습자료실</p></dd></a>
+      </dl>
+
+      <div class="cont_list">
+        <div id="Accordion_wrap" style="height:2000px;"></div>
+      </div>
+    </li>
+  </ul>
+</div>
+
+<script>
+  // YouTube 플레이어 객체와 재생 상태를 저장할 객체 초기화
+  let player;
+  let playbackStatus = {
+    state: 'unstarted', // 재생 상태 (unstarted, playing, paused, ended)
+    rsFinal: parseInt(document.getElementById('rs_final').value, 10),
+    rsMax: parseInt(document.getElementById('rs_max').value, 10)
+  };
+
+  let updateInterval;
+  let sendInterval;
+
+  // YouTube IFrame API가 준비되면 호출될 함수
+  function onYouTubeIframeAPIReady() {
+    console.log("YouTube IFrame API Ready");
+    player = new YT.Player('player', {
+      events: {
+        'onReady': onPlayerReady,
+        'onStateChange': onPlayerStateChange
+      }
+    });
+    console.log("Player object created", player);
+  }
+
+  // 플레이어가 준비되었을 때 호출되는 함수
+  function onPlayerReady(event) {
+    console.log("Player Ready");
+    console.log("마지막 시청 지점부터 ", playbackStatus.rsFinal);
+    player.seekTo(playbackStatus.rsFinal);
+  }
+
+  // 재생 정보를 업데이트하는 함수
+  function updatePlaybackStatus() {
+    if (player && player.getCurrentTime) {
+      playbackStatus.rsFinal = Math.floor(player.getCurrentTime()); // 현재 재생 시간을 정수로 변환
+      playbackStatus.rsMax = parseInt(document.getElementById('rs_max').value, 10);
+      console.log("최대시간:", playbackStatus.rsMax, "현재시간:", playbackStatus.rsFinal);
+
+      if (playbackStatus.rsFinal > playbackStatus.rsMax + 4) {
+        console.log("비정상 조작 감지");
+        player.seekTo(playbackStatus.rsMax);
+        playbackStatus.rsFinal = playbackStatus.rsMax;
+      } else {
+        if (playbackStatus.rsFinal > playbackStatus.rsMax) {
+          document.getElementById('rs_max').value = playbackStatus.rsFinal;
+          console.log("최대 시청 지점", document.getElementById('rs_max').value, "으로 갱신");
+        }
+      }
+    }
+  }
+
+  // 플레이어 상태가 변경될 때 호출되는 함수
+  function onPlayerStateChange(event) {
+    switch(event.data) {
+      case YT.PlayerState.PLAYING:
+        playbackStatus.state = 'playing';
+        console.log("재생중");
+        startIntervals();
+        break;
+      case YT.PlayerState.PAUSED:
+        playbackStatus.state = 'paused';
+        console.log("일시정지");
+        stopIntervals();
+        break;
+      case YT.PlayerState.ENDED:
+        playbackStatus.state = 'ended';
+        console.log("끝남");
+        stopIntervals();
+        break;
+      default:
+        playbackStatus.state = 'unstarted';
+        console.log("시작안함");
+        stopIntervals();
+        break;
+    }
+  }
+
+  // 재생 상태를 체크하고 서버로 전송하는 함수
+  function checkAndSendPlaybackStatus() {
+    playbackStatus.rsMax = Math.max(playbackStatus.rsFinal, parseInt(document.getElementById('rs_max').value, 10));
+
+    document.getElementById('rs_final').value = playbackStatus.rsFinal;
+    document.getElementById('rs_max').value = playbackStatus.rsMax;
+
+    $.ajax({
+      url: '/classroom/renewRegSession',
+      method: 'POST',
+      contentType: 'application/json',
+      data: JSON.stringify({
+        rsFinal: playbackStatus.rsFinal,
+        rsMax: playbackStatus.rsMax,
+        memberId: $('#member_id').val(),
+        subId: $('#sub_id').val(),
+        sessionId: $('#session_id').val()
+      }),
+      success: function(response) {
+        console.log('DB 전송 성공', response);
+      },
+      error: function(error) {
+        console.error('DB 전송 실패', error);
+      }
+    });
+  }
+
+  // DOM이 완전히 로드된 후에 YouTube API를 초기화
+  $(document).ready(function() {
+    console.log("페이지 로딩 완료");
+    if (typeof YT !== 'undefined' && YT && YT.Player) {
+      onYouTubeIframeAPIReady();
+    } else {
+      console.log("API 로딩 안됨");
+    }
+  });
+
+  // 재생 상태 업데이트 및 서버 전송을 위한 인터벌 시작
+  function startIntervals() {
+    console.log("타이머 시작");
+    clearInterval(updateInterval);
+    clearInterval(sendInterval);
+    updatePlaybackStatus(); // 즉시 호출
+    checkAndSendPlaybackStatus(); // 즉시 호출
+    updateInterval = setInterval(updatePlaybackStatus, 4000); // 4초마다 호출
+    sendInterval = setInterval(checkAndSendPlaybackStatus, 4000); // 4초마다 호출
+  }
+
+  // 재생 상태 업데이트 및 서버 전송을 위한 인터벌 중지
+  function stopIntervals() {
+    console.log("타이머 초기화");
+    clearInterval(updateInterval);
+    clearInterval(sendInterval);
+  }
+</script>
+</body>
+</html>

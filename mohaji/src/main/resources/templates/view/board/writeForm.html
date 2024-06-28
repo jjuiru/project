@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>커뮤니티</title>
+    <link rel="stylesheet" href="css/common/common.css" />
+    <link rel="stylesheet" href="css/common/sectionCss.css" />
+    <!-- 부트스트랩 CDN 추가 -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/css/boardDetail.css}"/>
+    <!-- 분리된 CSS 파일 연결 -->
+</head>
+<body>
+<header>
+    <!-- 상단 네비바 삽입 -->
+    <header th:replace="~{layout/header :: header}"></header>
+</header>
+
+<!-- aside와 main을 포함한 container1을 flexbox로 만들어 둘을 가로로 나란히 배치 -->
+<div class="container1">
+
+    <aside>
+        <!-- 사이드바 삽입 -->
+        <nav th:replace="~{layout/boardside :: boardside}"></nav>
+    </aside>
+
+    <main style="height: 1000px;">
+        <!-- 컨텐츠 삽입 -->
+        <div class="miniNavi">
+            <h1>글쓰기</h1>
+        </div>
+
+        <div class="container mt-5">
+            <form action="/newPost" method="post" enctype="multipart/form-data">
+                <input type="hidden" id="boardId" name="boardId" th:value="${boardId}">
+
+                <div class="form-group">
+                    <label for="boardId">게시판 :</label>
+                    <input type="text" id="boardName" name="boardName" th:value="${boardName}" readonly class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label for="title">제목:</label>
+                    <input type="text" id="title" name="title" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="content">내용:</label>
+                    <textarea id="content" name="content" class="form-control" rows="4" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="files">파일 첨부:</label>
+                    <input type="file" id="files" name="files" class="form-control-file" multiple="multiple">
+                </div>
+
+                <button type="submit" class="btn btn-primary">작성 완료</button>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <!-- 푸터 삽입 -->
+        <footer th:replace="~{layout/footer :: footer}"></footer>
+    </footer>
+</div>
+<script>
+    document.getElementById('files').addEventListener('change', function(event) {
+        const files = event.target.files; // FileList 객체
+        for (let i = 0; i < files.length; i++) {
+            console.log('File Name:', files[i].name);
+            console.log('File Size:', files[i].size);
+            console.log('File Type:', files[i].type);
+        }
+    });
+</script>
+</body>
+</html>

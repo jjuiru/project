@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.team1.mohaji.mapper.classroom.AssignmentRoomMapper">
+
+    <resultMap id="assignment" type="com.team1.mohaji.dto.classroom.AssignmentDto">
+        <id property="asgnId" column="asgn_id" />
+        <result property="asgnTitle" column="asgn_title" />
+        <result property="asgnDdate" column="asgn_ddate" />
+        <result property="asgnSdate" column="asgn_sdate" />
+        <result property="raSdate" column="ra_sdate" />
+        <result property="raScore" column="ra_score" />
+        <result property="status" column="status" />
+        <result property="asgnDesc" column="asgn_desc" />
+    </resultMap>
+
+    <resultMap id="regAsgn" type="com.team1.mohaji.dto.classroom.RegAssignmentDto">
+        <id property="raId" column="ra_id"/>
+        <result property="attachedId" column="attached_id"/>
+        <result property="raContent" column="ra_content"/>
+        <result property="raFeedback" column="ra_feedback"/>
+        <result property="raScore" column="ra_score"/>
+        <result property="raSdate" column="ra_sdate"/>
+        <result property="asgnId" column="asgn_id"/>
+        <result property="memberId" column="member_id"/>
+        <result property="subId" column="sub_id"/>
+    </resultMap>
+
+    <select id="countRegAsgn" parameterType="int" resultType="int">
+        SELECT COUNT(*)
+        FROM reg_asgn
+        WHERE asgn_id = #{asgnId} AND member_id = #{memberId} AND sub_id = #{subId};
+    </select>
+
+    <update id = "updateRegAsgn" parameterType="com.team1.mohaji.dto.classroom.RegAssignmentDto">
+UPDATE reg_asgn SET ra_content = #{raContent}, ra_sdate = now(), attached_id =#{attachedId} WHERE asgn_id = #{asgnId} AND member_id = #{memberId} AND sub_id = #{subId};
+    </update>
+
+    <select id="selectRegAsgn" parameterType="int" resultMap="regAsgn">
+        SELECT *
+        FROM reg_asgn
+        WHERE asgn_id = #{asgnId} AND member_id = #{memberId} AND sub_id = #{subId};
+    </select>
+
+    <insert id = "insertRegAsgn" parameterType="map">
+        INSERT INTO reg_asgn (asgn_id, member_id, sub_id, ra_content, ra_sdate, attached_id)
+        VALUES (#{asgnId}, #{memberId}, #{subId}, #{raContent}, now(), #{attachedId})
+    </insert>
+        <!-- 다른 필드들에 대한 매핑 추가 -->
+    <select id="selectAssignment" parameterType="int" resultMap="assignment">
+    <![CDATA[
+        SELECT * FROM asgn WHERE asgn_id = #{asgnId};
+        ]]>
+    </select>
+
+    <select id="selectAssignmentList" parameterType="int" resultMap="assignment">
+    <![CDATA[
+        SELECT
+            a.asgn_id,
+            a.asgn_title,
+            a.asgn_ddate,
+            a.asgn_sdate,
+            ra.ra_sdate,
+            ra.ra_score,
+            CASE
+                WHEN a.asgn_sdate <= NOW() AND ra.ra_sdate is null THEN '미제출'
+                WHEN a.asgn_ddate <= NOW() AND ra.ra_score != 0 THEN '평가완료'
+                WHEN a.asgn_ddate <= NOW() AND ra.ra_sdate is not null AND ra.ra_score = 0 THEN '평가중'
+                WHEN a.asgn_sdate <= NOW() AND ra.ra_sdate is not null THEN '제출완료'
+
+                ELSE ''
+                END AS status
+        FROM
+            asgn a
+                LEFT JOIN reg_asgn ra
+                          ON a.asgn_id = ra.asgn_id AND ra.member_id = #{memberId}
+        ORDER BY a.asgn_sdate;
+        ]]>
+    </select>
+
+    <select id="selectSubName" parameterType="int" resultType="String">
+    <![CDATA[
+        SELECT
+    sub_name
+
+        FROM
+            subject
+        WHERE sub_id = #{subId}
+        ]]>
+    </select>
+</mapper>

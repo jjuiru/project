@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <th:block th:fragment="header">
+    <head>
+      <link rel="stylesheet" type="text/css" href="/css/common/header2.css" />
+      <link rel="stylesheet" type="text/css" href="/css/common/header1.css" />
+      <link rel="stylesheet" href="https://lms.ssu.ac.kr/lib/bootstrap/4.2.1/bootstrap.min.css"/>
+      <script src="https://lms.ssu.ac.kr/js/coursecatalog-bootstrap.js"></script>
+<style>
+      .no-inherit {
+        list-style: none;
+      }
+</style>
+      <title>header navbar</title>
+
+    </head>
+    <body>
+      <!-- header -->
+      <script>
+        window.xnSubMenuHelper = {
+          // 서브 메뉴를 표시/숨김한다.
+          showHideSubMenuWrapper: function (e, event_name, target_class_name) {
+            e.stopPropagation();
+            if (target_class_name == "xn-header-menu-wrapper")
+              this.mouseoverMenuWrapper = event_name == "mouseenter";
+            else if (target_class_name == "xn-sub-menu-wrapper")
+              this.mouseoverSubMenuWrapper = event_name == "mouseenter";
+            xnSubMenuHelper.clearMouseoverSubMenuTimer();
+
+            if (event_name == "mouseenter") {
+              xnSubMenuHelper.setMouseoverSubMenuTimer();
+            } else if (event_name == "mouseleave") {
+              xnSubMenuHelper.setMouseoverSubMenuTimer();
+            }
+          },
+
+          // 서브 메뉴를 표시/숨김 애니메이션을 수행한다.
+          showHideSubMenuAnim: function () {
+            if (!this.mouseoverMenuWrapper && !this.mouseoverSubMenuWrapper) {
+              if ($(".xn-sub-menu-outer-wrapper").css("display") != "block")
+                return;
+
+              $(".xn-sub-menu-outer-wrapper")
+                .stop()
+                .animate(
+                  {
+                    height: "0px",
+                  },
+                  600,
+                  function () {
+                    $(this).hide();
+                  }
+                );
+            } else {
+              const subMenuWrapperElement = $(".xn-sub-menu-outer-wrapper");
+              const currentHeight = subMenuWrapperElement.height();
+              const wrapperHeight = subMenuWrapperElement
+                .css("height", "auto")
+                .height();
+              subMenuWrapperElement.height(currentHeight);
+
+              $(".xn-sub-menu-outer-wrapper")
+                .show()
+                .stop()
+                .animate({
+                  height: wrapperHeight + "px",
+                });
+            }
+          },
+
+          // 타이버를 제거한다.
+          clearMouseoverSubMenuTimer: function () {
+            if (this.mouseoverSubMenuTimer != null)
+              clearTimeout(this.mouseoverSubMenuTimer);
+          },
+
+          // 타이머를 수행시킨다.
+          setMouseoverSubMenuTimer: function () {
+            this.mouseoverSubMenuTimer = setTimeout(function () {
+              xnSubMenuHelper.showHideSubMenuAnim();
+            }, 400);
+          },
+
+          // 서브 메뉴에 마우스 오버하면, 해당 대 메뉴에 hover 효과가 표시된다.
+          onmouseenterSubMenuItemWrapper: function (target) {
+            var index = $(target).index();
+            $($(".xn-header-menu-wrapper #menu-main li").get(index))
+              .find("a")
+              .addClass("hover");
+          },
+
+          // 해당 대 메뉴에 hover 효과를 모두 제거한다.
+          onmouseleaveSubMenuItemWrapper: function (target) {
+            $(".xn-header-menu-wrapper #menu-main li")
+              .find("a")
+              .removeClass("hover");
+          },
+        };
+      </script>
+
+      <!-- header -->
+      <!-- 일반 헤더와 OER 헤더가 분리되어 있다. -->
+      <!-- header -->
+      <script>
+        function weirdNavbarMobileToggle() {
+          var hiddenElems = document.getElementsByClassName("navbar-hidden");
+          if (!!hiddenElems && hiddenElems.length > 0) {
+            var hiddenElem = hiddenElems[0];
+            hiddenElem.classList.remove("navbar-hidden");
+            return;
+          }
+          var elem = document.getElementsByClassName("navbar-collapse")[0];
+          elem.className += " " + "navbar-hidden";
+        }
+      </script>
+      <header id="header">
+        <nav
+          class="navbar navbar-light navbar-static-top navbar-expand-md"
+          role="navigation"
+        >
+          <div class="container">
+            <div class="navbar-header">
+              <div class="float-left">
+                <button
+                  class="navbar-toggler"
+                  type="button"
+                  onclick="weirdNavbarMobileToggle()"
+                  data-target="#bs-example-navbar-collapse-1"
+                  aria-controls="bs-example-navbar-collapse-1"
+                  aria-expanded="false"
+                  aria-label="Toggle navigation"
+                >
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+              </div>
+              <div class="float-left xn-main-catalog-header-logo-wrap">
+                <a href="/main">
+                  <div class="xn-main-catalog-header-logo">
+                    <img
+                      class="xn-main-catalog-header-logo-image"
+                      src="/img/main/navi.png"
+                    />
+                  </div>
+                </a>
+              </div>
+              <div class="xn-main-menu-wrap">
+                <div class="desktop">
+                  <div class="xn-header-menu-wrapper">
+                    <ul class="xn-header-menu" id="xn-header-menu">
+                      <li id="menu-item-a" class="menu-item">
+                        <a href="/info">사이트소개</a>
+                      </li>
+                      <li id="menu-item-b" class="menu-item">
+                        <a href="/regCourse">수강신청</a>
+                      </li>
+                      <li id="menu-item-c" class="menu-item">
+                        <a href="/boardList">지원센터</a>
+                      </li>
+                      <li id="menu-item-d" class="menu-item">
+                        <a href="/myPage/regList">마이페이지</a>
+                      </li>
+                    </ul>
+
+
+
+                  </div>
+                  <div class="xn-sub-menu-outer-wrapper">
+                    <div class="xn-sub-menu-outer-containar">
+                      <span class="xn-sub-menu-item-bg"></span>
+                      <div class="xn-sub-menu-wrapper pull-right">
+                        <ul
+                          class="xn-sub-menu-item-wrapper"
+                          onmouseenter="xnSubMenuHelper.onmouseenterSubMenuItemWrapper(this);"
+                          onmouseleave="xnSubMenuHelper.onmouseleaveSubMenuItemWrapper(this);"
+                        >
+                          <li id="menu-item-a1" class="menu-item">
+                            <a href="/info">소개</a>
+                          </li>
+                        </ul>
+                        <ul
+                          class="xn-sub-menu-item-wrapper"
+                          onmouseenter="xnSubMenuHelper.onmouseenterSubMenuItemWrapper(this);"
+                          onmouseleave="xnSubMenuHelper.onmouseleaveSubMenuItemWrapper(this);"
+                        >
+                          <li id="menu-item-b1" class="menu-item">
+                            <a href="/regCourse" data-role="menu">수강신청</a>
+                          </li>
+                        </ul>
+                        <ul
+                          class="xn-sub-menu-item-wrapper"
+                          onmouseenter="xnSubMenuHelper.onmouseenterSubMenuItemWrapper(this);"
+                          onmouseleave="xnSubMenuHelper.onmouseleaveSubMenuItemWrapper(this);"
+                        >
+                          <li id="menu-item-c1" class="menu-item">
+                            <a href="/boardList">커뮤니티</a>
+                          </li>
+                          <li id="menu-item-c2" class="menu-item">
+                            <a href="#" data-role="menu">공통기준</a>
+                          </li>
+                        </ul>
+                        <ul
+                          class="xn-sub-menu-item-wrapper"
+                          onmouseenter="xnSubMenuHelper.onmouseenterSubMenuItemWrapper(this);"
+                          onmouseleave="xnSubMenuHelper.onmouseleaveSubMenuItemWrapper(this);"
+                        >
+                          <li id="menu-item-d1" class="menu-item">
+                            <a href="/myPage/regList">수강중인 강의</a>
+                          </li>
+                          <li id="menu-item-d2" class="menu-item">
+                            <a href="/myPage/regInfo">수강 이력</a>
+                          </li>
+                          <!--혜빈님 컨트롤러 요청명 따라 갈 것   -->
+                          <li id="menu-item-d3" class="menu-item">
+                            <a href="/myPage/userInfo" data-role="menu">내 정보</a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                </div>
+            </div>
+          </div>
+          <div style="margin-right: 10%; margin-left: 0;">
+            <span class="no-inherit" th:text="${name} + '님 로그인'"></span>&nbsp;&nbsp;
+            <a class="no-inherit" href="/logout">로그아웃</a>
+          </div>
+        </nav>
+      </header>
+      <script>
+        $(document).ready(function () {
+          if ($(".xn-sub-menu-item-wrapper").length == 0) return;
+
+          // 메뉴 영역이 아니면, 서브메뉴를 숨긴다.
+          $(".xn-header-menu-wrapper").bind("mouseenter", function (e) {
+            xnSubMenuHelper.showHideSubMenuWrapper(
+              e,
+              "mouseenter",
+              "xn-header-menu-wrapper"
+            );
+          });
+          $(".xn-header-menu-wrapper").on("mouseleave", function (e) {
+            xnSubMenuHelper.showHideSubMenuWrapper(
+              e,
+              "mouseleave",
+              "xn-header-menu-wrapper"
+            );
+          });
+
+          $(".xn-sub-menu-wrapper").on("mouseenter", function (e) {
+            xnSubMenuHelper.showHideSubMenuWrapper(
+              e,
+              "mouseenter",
+              "xn-sub-menu-wrapper"
+            );
+          });
+          $(".xn-sub-menu-wrapper").on("mouseleave", function (e) {
+            xnSubMenuHelper.showHideSubMenuWrapper(
+              e,
+              "mouseleave",
+              "xn-sub-menu-wrapper"
+            );
+          });
+        });
+      </script>
+    </body>
+  </th:block>
+</html>

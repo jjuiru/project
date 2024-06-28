@@ -1,0 +1,27 @@
+
+.miniNavi {
+    z-index: 0;
+    position: relative;
+    max-width: 100%; /* 섹션의 최대 너비 지정 */
+    max-height: 134px;
+    margin: auto; /* 섹션을 가운데 정렬합니다. */
+    margin-top: 1.5px;
+    margin-bottom: 50px;
+    padding-top: 2.8rem; /* 섹션 내부 여백 추가 */
+    padding-bottom: 2.5rem;
+    background-image: url('/img/main/secondNavi.png'); /* 배경 이미지 설정 */
+    background-size: cover; /* 배경 이미지를 섹션에 맞게 확장합니다. */
+    background-position: center; /* 배경 이미지를 섹션 가운데로 정렬합니다. */
+    text-align: center; /* 섹션 내부의 요소들을 가운데 정렬합니다. */
+
+
+}
+.miniNavi h1 {
+    color: #ffffff;
+}
+.miniNavi > * {
+    margin-top: 0px; /* 섹션 내부 요소의 상단 마진 */
+    margin-bottom: 500px; /* 섹션 내부 요소의 하단 마진 */
+}
+
+

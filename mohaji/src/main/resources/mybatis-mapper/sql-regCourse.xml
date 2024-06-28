@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.team1.mohaji.mapper.main.RegCourseMapper">
+
+    <!-- resultMap -->
+    <resultMap id="subject" type="com.team1.mohaji.dto.SubjectDto">
+        <id property="subId" column="sub_id" />
+        <result property="deptName" column="dept_name" />
+        <result property="subName" column="sub_name" />
+        <result property="name" column="name" />
+        <result property="subType" column="sub_type" />
+        <result property="subDesc" column="sub_desc" />
+        <result property="subScount" column="sub_scount" />
+        <result property="subCredit" column="sub_credit" />
+        <result property="subRsdate" column="sub_rsdate" />
+        <result property="subRedate" column="sub_redate" />
+        <result property="subSdate" column="sub_sdate" />
+        <result property="subEdate" column="sub_edate" />
+        <result property="memberId" column="member_id" />
+        <result property="rcStat" column="rc_stat" />
+    </resultMap>
+
+    <resultMap id="regCourse" type="com.team1.mohaji.dto.RegCourseDto">
+        <id property="memberId" column="member_id" />
+        <result property="subId" column="sub_id" />
+        <result property="ccId" column="cc_id" />
+        <result property="rcStat" column="rc_stat" />
+        <result property="rcProgress" column="rc_progress" />
+        <result property="rcAsgnScore" column="rc_asgn_score" />
+        <result property="rcAttScore" column="rc_att_score" />
+        <result property="rcGrade" column="rc_grade" />
+    </resultMap>
+
+    <!--과목의 모든 리스트를 가져오는 쿼리문 (+ 학과, 교수이름, 내용까지)-->
+    <select id="selectAllSubject" parameterType="String" resultMap="subject">
+   <![CDATA[
+        SELECT
+            s.*,
+            d.dept_name,
+            m.name
+        FROM
+            subject s
+                JOIN department d ON s.dept_id = d.dept_id
+                JOIN professors p ON s.member_id = p.member_id
+                JOIN members m ON p.member_id = m.member_id
+        WHERE
+            s.sub_id NOT IN (
+                SELECT rc.sub_id
+                FROM reg_course rc
+                WHERE rc.member_id = #{memberId}
+                  AND rc.rc_stat IN ('수강중', '이수','신청중')
+            )
+          AND CURDATE() BETWEEN s.sub_rsdate AND s.sub_redate;
+        ]]>
+</select>
+
+    <!--subId로 한 과목의 정보만 불러오기-->
+    <select id="selectOneSubject" parameterType="int" resultMap="subject">
+   <![CDATA[
+        SELECT
+            s.*,
+            d.dept_name,
+            m.name
+        FROM
+            subject s
+                JOIN department d ON s.dept_id = d.dept_id
+                JOIN professors p ON s.member_id = p.member_id
+                JOIN members m ON p.member_id = m.member_id
+        WHERE
+            s.sub_id = #{subId}
+          AND CURDATE() BETWEEN s.sub_rsdate AND s.sub_redate;
+        ]]>
+</select>
+
+    <select id="selectSessionTitle" parameterType="int" resultType="String">
+        <![CDATA[
+        SELECT
+            session_title
+        FROM
+            session
+        WHERE
+            sub_id = #{subId}
+        ]]>
+    </select>
+
+    <!--과목의 모든 리스트에서 키워드,카테고리 모두로 검색하는 쿼리-->
+    <select id="selectAllSearch" parameterType="String" resultMap="subject">
+  <![CDATA[
+        SELECT
+            s.*,
+            d.dept_name,
+            m.name
+        FROM
+            subject s
+                JOIN
+            department d ON s.dept_id = d.dept_id
+                JOIN
+            professors p ON s.member_id = p.member_id
+                JOIN
+            members m ON p.member_id = m.member_id
+        WHERE
+            s.sub_type = #{category}
+          AND s.sub_name LIKE CONCAT('%', #{keyword}, '%')
+          AND s.sub_id NOT IN (
+            SELECT rc.sub_id
+            FROM reg_course rc
+            WHERE rc.member_id = #{memberId}
+              AND rc.rc_stat IN ('수강중', '이수','신청중')
+        )
+          AND CURDATE() BETWEEN s.sub_rsdate AND s.sub_redate;
+        ]]>
+</select>
+
+    <!--과목의 모든 리스트에서 키워드로 검색하는 쿼리-->
+    <select id="selectKeyword" parameterType="String" resultMap="subject">
+    <![CDATA[
+        SELECT
+            s.*,
+            d.dept_name,
+            m.name
+        FROM
+            subject s
+                JOIN
+            department d ON s.dept_id = d.dept_id
+                JOIN
+            professors p ON s.member_id = p.member_id
+                JOIN
+            members m ON p.member_id = m.member_id
+        WHERE
+            s.sub_name LIKE CONCAT('%', #{keyword}, '%')
+          AND s.sub_id NOT IN (
+            SELECT rc.sub_id
+            FROM reg_course rc
+            WHERE rc.member_id = #{memberId}
+              AND rc.rc_stat IN ('수강중', '이수','신청중')
+        )
+          AND CURDATE() BETWEEN s.sub_rsdate AND s.sub_redate;
+        ]]>
+</select>
+    <!--과목의 모든 리스트에서 카테고리로 검색하는 쿼리-->
+    <select id="selectCategory" parameterType="String" resultMap="subject">
+    <![CDATA[
+        SELECT
+            s.*,
+            d.dept_name,
+            m.name
+        FROM
+            subject s
+                JOIN
+            department d ON s.dept_id = d.dept_id
+                JOIN
+            professors p ON s.member_id = p.member_id
+                JOIN
+            members m ON p.member_id = m.member_id
+        WHERE
+            s.sub_type = #{category}
+          AND s.sub_id NOT IN (
+            SELECT rc.sub_id
+            FROM reg_course rc
+            WHERE rc.member_id = #{memberId}
+              AND rc.rc_stat IN ('수강중', '이수','신청중')
+        ) AND CURDATE() BETWEEN s.sub_rsdate AND s.sub_redate;
+        ]]>
+</select>
+
+    <!--과목의 모든 리스트에서 수강중인것을 제외한 리스트부르는 쿼리-->
+    <select id="selectSubjectByRegStat" parameterType="int" resultMap="subject">
+    <![CDATA[
+        SELECT s.*, d.dept_name
+        FROM subject s
+                 JOIN department d ON s.dept_id = d.dept_id
+        WHERE s.sub_id NOT IN (
+            SELECT rc.sub_id
+            FROM reg_course rc
+            WHERE rc.member_id = #{memberId}
+              AND rc.rc_stat IN ('수강중', '이수','신청중')
+        ) AND CURDATE() BETWEEN s.sub_rsdate AND s.sub_redate;
+        ]]>
+</select>
+    <!--수강한 과목의 stat(수강상태)를 불러오는 쿼리-->
+    <select id="selectRegCourseByRegStat" parameterType="int" resultType="String">
+    <![CDATA[
+        SELECT rc_stat
+        FROM reg_course
+        WHERE member_id = #{memberId}
+          AND sub_id = #{subId}
+        ]]>
+</select>
+    <!--수강 상태를 수강중으로 바꿔주는 쿼리-->
+    <update id="updateRegCourse" parameterType="int">
+   <![CDATA[
+        UPDATE reg_course
+        SET rc_stat = '신청중'
+        WHERE member_id = #{memberId}
+          AND sub_id = #{subId}
+        ]]>
+</update>
+
+    <!--수강 상태를 취소로 바꿔주는 쿼리-->
+    <update id="deleteRegInfo" parameterType="int">
+   <![CDATA[
+        UPDATE reg_course
+        SET rc_stat = '취소'
+        WHERE member_id = #{memberId}
+          AND sub_id = #{subId}
+        ]]>
+</update>
+
+    <!--수강신청한 모든 리스트에서 수강중인것 부르는 쿼리-->
+        <select id="selectRegInfoBF" parameterType="int" resultMap="subject">
+<![CDATA[
+            SELECT s.*, d.dept_name
+            FROM subject s
+                     JOIN department d ON s.dept_id = d.dept_id
+            WHERE s.sub_id IN (
+                SELECT rc.sub_id
+                FROM reg_course rc
+                WHERE rc.member_id =  #{memberId}
+                  AND rc.rc_stat IN ('신청중')
+            )
+            ]]>
+</select>
+
+    <!--수강신청한 모든 리스트에서 수강신청 기간이 지난것을 제외한 리스트부르는 쿼리-->
+    <select id="selectRegInfoAT" parameterType="int" resultMap="subject">
+<![CDATA[
+        SELECT s.*, d.dept_name, rc.rc_stat
+        FROM subject s
+                 JOIN department d ON s.dept_id = d.dept_id
+                 LEFT JOIN reg_course rc ON s.sub_id = rc.sub_id AND rc.member_id = #{memberId}
+        WHERE s.sub_id IN (
+            SELECT rc.sub_id
+            FROM reg_course rc
+            WHERE rc.member_id = #{memberId}
+              AND rc.rc_stat IN ('이수', '취소')
+        )
+        ]]>
+</select>
+
+    <!--수강신청-->
+    <insert id="insertReg">
+    <![CDATA[
+        INSERT INTO reg_course (member_id123123123, sub_id, rc_stat)
+        VALUES (
+                   #{memberId},
+                   #{subId},
+                   #{rcStat}
+               )
+        ]]>
+</insert>
+
+
+
+    <!--수강중인 학점의 합을 불러오기-->
+    <select id="selectCreditSum" resultType="int">
+<![CDATA[
+        SELECT COALESCE(SUM(COALESCE(s.sub_credit, 0)), 0) AS total_credits
+        FROM reg_course rc
+                 JOIN subject s ON rc.sub_id = s.sub_id
+        WHERE rc.member_id = #{memberId}
+          AND rc.rc_stat != '취소'
+        ]]>
+</select>
+
+
+    <select id="selectCountSubject" resultType= "int">
+    <![CDATA[
+        SELECT COUNT(*)
+        FROM subject
+        ]]>
+</select>
+
+    <!--신청중 상태를 수강중으로 바꿔주는 쿼리-->
+    <update id="updateRCStat" parameterType="int">
+   <![CDATA[
+        UPDATE reg_course rc
+            INNER JOIN subject s ON rc.sub_id = s.sub_id
+            SET rc.rc_stat = '수강중'
+        WHERE rc.member_id = #{memberId}
+          AND rc.rc_stat = '신청중'
+          AND DATE(s.sub_sdate) <= CURDATE();
+        ]]>
+</update>
+
+
+</mapper>

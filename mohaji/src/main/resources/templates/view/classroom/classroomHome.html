@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <link rel="stylesheet" type="text/css" href="/css/common/common.css" />
+    <link rel="stylesheet" type="text/css" href="/css/common/sectionCss.css" />
+    <link rel="stylesheet" type="text/css" href="/css/common/commonGrid.css"/>
+</head>
+<body>
+<script>
+    function showAlert(message) {
+        alert(message);
+    }
+</script>
+
+<header>
+    <!-- 상단 네비바 삽입 -->
+    <header th:replace="~{layout/header :: header}"></header>
+</header>
+
+<!-- aside와 main을 포함한 container1을 flexbox로 만들어 둘을 가로로 나란히 배치 -->
+<div class="container1">
+    <aside>
+        <!-- 사이드바 삽입 필요없을시 삭제 -->
+        <nav th:replace="~{layout/classroomSidebar:: classroomSidebar}"></nav>
+    </aside>
+
+    <main style="height: 1000px">
+        <!-- 세컨드 타이틀 필요없을시 삭제 -->
+        <div class="miniNavi">
+            <h1>강의실</h1>
+        </div>
+        <div Id="grid"></div>
+        <!-- 컨텐츠 삽입 -->
+
+    </main>
+
+    <footer>
+        <!-- 푸터 삽입 필요없을시 삭제 -->
+        <footer th:replace="~{layout/footer :: footer}"></footer>
+    </footer>
+</div>
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    document.addEventListener("DOMContentLoaded", function () {
+        var home = /*[[${home}]]*/ '[]';
+
+        tui.Grid.applyTheme("stripe"); // 테마 적용
+        var grid = new tui.Grid({
+            el: document.getElementById("grid"),
+            scrollX: false,
+            scrollY: false,
+            columns: [
+                {
+                    header: "주차",
+                    name: "sessionSnum",
+                    align: 'center',
+                    sortable: true,
+                },
+                {
+                    header: "차시명",
+                    name: "sessionTitle",
+                    align: 'center',
+                    sortable: true,
+                },
+                {
+                    header: "학습 시작일",
+                    name: "sessionSdate",
+                    align: 'center',
+                    sortable: true,
+                },
+                {
+                    header: "학습 마감일",
+                    name: "sessionEdate",
+                    align: 'center',
+                    sortable: true,
+                },
+                {
+                    header: "진도율",
+                    name: "rsProgress",
+                    align: 'center'
+                },
+                {
+                    header: "과목 코드",
+                    name: "subId",
+                    align: 'center',
+                    hidden: true,
+                },
+                {
+                    header: "세션 코드",
+                    name: "sessionId",
+                    align: 'center',
+                    hidden: true,
+                },
+                {
+                    header: "학습하기",
+                    name: "",
+                    align: 'center',
+                    formatter: function (item) {
+                        const sessionId = item.row.sessionId;
+                        const subId = item.row.subId; // 각 항목의 memberId를 가져옵니다.
+                        const url = `?sessionId=${sessionId}&subId=${subId}`;
+                        return `<a href=/classroom/viewer${url}>학습하기</a>`;
+                    },
+                },
+            ],
+        });
+        grid.resetData(home); // 서버에서 전달된 데이터로 그리드 초기화
+    });
+    /*]]>*/
+</script>
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    (function() {
+        var message = /*[[${message != null}]]*/ false ? '/*[[${message}]]*/' : null;
+        if (message) {
+            showAlert('[[${message}]]');
+        }
+    })();
+    /*]]>*/
+</script>
+
+<script src="https://uicdn.toast.com/grid/latest/tui-grid.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</body>
+</html>

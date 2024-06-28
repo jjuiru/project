@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>강의 조회</title>
+    <!-- Bootstrap CSS 로드 -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- 사용자 정의 CSS 로드 -->
+    <link rel="stylesheet" href="/css/common/common.css" />
+    <link rel="stylesheet" href="/css/common/sectionCss.css" />
+    <!-- TUI Grid CSS 로드 -->
+    <link rel="stylesheet" type="text/css" href="https://uicdn.toast.com/grid/latest/tui-grid.min.css" />
+
+    <style>
+        .table {
+            width: 100%; /* 테이블의 전체 너비를 100%로 설정 */
+        }
+
+        .table th, .table td {
+            word-wrap: break-word; /* 텍스트가 셀을 벗어나지 않도록 줄 바꿈 설정 */
+        }
+    </style>
+</head>
+<body>
+<header>
+    <!-- 상단 네비바 삽입 -->
+    <header th:replace="~{layout/header :: header}"></header>
+</header>
+
+<!-- aside와 main을 포함한 container1을 flexbox로 만들어 둘을 가로로 나란히 배치 -->
+<div class="container1">
+    <main style="height: 1000px;">
+        <!-- 컨텐츠 삽입 -->
+        <div class="miniNavi">
+            <h1>수강신청</h1>
+        </div>
+        <!-- 강의 조회 부분 -->
+        <h2>강의조회</h2>
+        <!-- 교양/전공 필수 버튼 영역 -->
+        <div class="toggle-area">
+            <form id="searchForm" th:action="@{/search}" method="POST" class="form-inline">
+                <div class="form-group">
+                    <label for="category">필수 선택:</label>
+                    <select id="category" name="category" class="form-control mr-2">
+                        <option value="all" th:selected="${category == 'all'}">전체</option>
+                        <option value="전공필수" th:selected="${category == '전공필수'}">전공필수</option>
+                        <option value="전공선택" th:selected="${category == '전공선택'}">전공선택</option>
+                        <option value="교양필수" th:selected="${category == '교양필수'}">교양필수</option>
+                        <option value="교양선택" th:selected="${category == '교양선택'}">교양선택</option>
+                    </select>
+                    <label for="keyword" class="mr-2">키워드 검색:</label>
+                    <input type="text" class="form-control mr-2" id="keyword" name="keyword" th:value="${keyword}" placeholder="강의명으로 검색">
+                    <button type="submit" class="btn btn-primary">검색</button>
+                </div>
+            </form>
+        </div>
+        <!-- 강의 목록 표시 -->
+        <div class="table-responsive">
+            <div id="grid"></div> <!-- 테이블 구조를 수정하여 div를 외부로 이동 -->
+        </div>
+    </main>
+
+    <footer>
+        <!-- 푸터 삽입 -->
+        <footer th:replace="~{layout/footer :: footer}"></footer>
+    </footer>
+    <!-- 모달 팝업 HTML 추가 -->
+    <div class="modal fade" id="courseDetailModal" tabindex="-1" role="dialog" aria-labelledby="courseDetailModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="courseDetailModalLabel">강의 상세 정보</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><strong>학과 | </strong> <span id="modal-department"></span></li>
+                        <li class="list-group-item"><strong>교수 | </strong> <span id="modal-professor"></span></li>
+                        <li class="list-group-item"><strong>과목명 | </strong> <span id="modal-subjectName"></span></li>
+                        <li class="list-group-item"><strong>과목유형 | </strong> <span id="modal-subjectType"></span></li>
+                        <li class="list-group-item"><strong>과목설명 | </strong> <span id="modal-description"></span></li>
+                        <li class="list-group-item"><strong>커리큘럼 | </strong>
+                            <ol id="modal-curriculum"></ol>
+                        </li>
+                        <li class="list-group-item"><strong>취득 가능 학점:</strong> <span id="modal-credit"></span>점</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script th:inline="javascript">
+    var grid;
+    var memberId = /*[[${memberId}]]*/ '[]';
+    /*<![CDATA[*/
+    document.addEventListener("DOMContentLoaded", function () {
+        // 그리드 객체를 초기화
+        var regCourseList = /*[[${regCourseList}]]*/ '[]';
+        grid = new tui.Grid({
+            el: document.getElementById("grid"),
+            scrollX: false,
+            scrollY: false,
+            columns: [
+                {
+                    header: "Id",
+                    name: "subId",
+                    align: 'center',
+                    hidden: true,
+                },
+                {
+                    header: "구분",
+                    name: "subType",
+                    align: 'center'
+                },
+                {
+                    header: "학과",
+                    name: "deptName",
+                    align: 'center',
+                    sortable: true,
+                },
+                {
+                    header: "과목",
+                    name: "subName",
+                    align: 'center',
+                    sortable: true,
+                    formatter: function (item) {
+                        const subName=item.row.subName
+                        const subId = item.row.subId;
+                        return `<a id="${subId}" href="#" class="subName">${subName}</a>`
+                    },
+                },
+
+                {
+                    header: "차시",
+                    name: "subScount",
+                    align: 'center'
+                },
+                {
+                    header: "학점",
+                    name: "subCredit",
+                    align: 'center'
+                },
+                {
+                    header: "신청시작일",
+                    name: "subRsdate",
+                    align: 'center'
+                },
+                {
+                    header: "신청마감일",
+                    name: "subRedate",
+                    align: 'center'
+                },
+                {
+                    header: "신청",
+                    name: "lectureRoom",
+                    align: 'center',
+                    formatter: function (item) {
+                        const subId = item.row.subId;
+                        const url = `/reg?memberId=${memberId}&subId=${subId}`;
+                        return `<a class="regSubmit" href="${url}" >수강신청</a>`;
+                    },
+                },
+            ],
+        });
+
+
+
+
+        if(regCourseList == null || regCourseList.length === 0 ||regCourseList === '[]') {
+            // 수강신청 기간이 아닐 때 처리
+            $('#grid').hide(); // 그리드 숨기기
+            console.log("이프문으로 왔어")
+            alert('수강신청 기간이 아닙니다.');
+        } else {
+            grid.resetData(regCourseList); // 서버에서 전달된 데이터로 그리드 초기화
+            $('#grid').show(function() {
+                console.log("그리드초기화로왔어2")
+                const urlParams = new URLSearchParams(window.location.search);
+                const message = urlParams.get('message');
+                // message 값이 존재하면 alert 창으로 표시
+                if (message) {
+                    alert(message);
+                }
+            }); // 그리드 다시 보이기
+
+        }
+    });
+
+
+    $('#searchForm').submit(function(event) {
+        event.preventDefault(); // 폼 기본 제출 동작 방지
+        var formData = $(this).serialize(); // 폼 데이터 직렬화
+        $.ajax({
+            type: 'POST',
+            url: $(this).attr('action'),
+            data: formData,
+            success: function(response) {
+                console.log(response);
+                console.log(memberId);
+                // 성공적으로 응답을 받으면 강의 목록을 업데이트
+                if(response == null||response.length === 0 ||response === '[]') {
+                    // 수강신청 기간이 아닐 때 처리
+                    $('#grid').hide(); // 그리드 숨기기
+                    console.log("이프문으로 왔어")
+                    alert('수강신청 기간이 아닙니다.');
+                } else {
+                    grid.resetData(response); // 서버에서 전달된 데이터로 그리드 초기화
+                    console.log("그리드초기화로왔어1")
+                    $('#grid').show(); // 그리드 다시 보이기
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error('에러 발생: ', error);
+            }
+        });
+    });
+    /*]]>*/
+</script>
+<script>
+    // 과목명을 클릭했을 때 팝업을 표시하는 이벤트 리스너 추가
+    document.getElementById('grid').addEventListener('click', function(event) {
+        const clickedElement = event.target;
+        // 클릭된 요소의 클래스 확인
+        if (clickedElement.classList.contains('subName')) {
+            event.preventDefault();
+            // 클릭된 과목명 id 속성을 가져와서 과목 ID를 추출
+            const subId1 = clickedElement.getAttribute('id');
+            fetchCourseDetail(subId1);
+        }
+    });
+
+
+    document.getElementById('grid').addEventListener('click', function(event) {
+        if (event.target.classList.contains('regSubmit')) {
+            event.preventDefault();
+            const confirmResult = confirm('수강신청 하시겠습니까?');
+            if (confirmResult) {
+                window.location.href = event.target.href;
+            }
+        }
+    });
+
+    // 강의 상세 정보를 가져와서 모달에 표시하는 함수
+    function fetchCourseDetail(subId1) {
+        $.ajax({
+            url: '/courseDetail/' + subId1,
+            method: 'GET',
+            success: function(data) {
+                $('#modal-department').text(data.deptName);
+                $('#modal-professor').text(data.name);
+                $('#modal-subjectName').text(data.subName);
+                $('#modal-subjectType').text(data.subType);
+                $('#modal-description').text(data.subDesc);
+                $('#modal-credit').text(data.credit);
+                $('#modal-curriculum').empty();
+                data.sessionTitle.forEach(function(item) {
+                    $('#modal-curriculum').append('<li>' + item + '</li>');
+                });
+                $('#courseDetailModal').modal('show');
+            },
+            error: function(xhr, status, error) {
+                console.error('에러 발생: ', error);
+            }
+        });
+        }
+</script>
+
+<script src="https://uicdn.toast.com/grid/latest/tui-grid.js"></script>
+</body>
+</html>

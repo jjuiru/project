@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.team1.mohaji.mapper.classroom.HomeMapper">
+
+    <resultMap id="classroomHome" type="com.team1.mohaji.dto.classroom.HomeDto">
+    <result property="sessionSnum" column="session_snum" />
+        <result property="sessionId" column="session_id" />
+    <result property="sessionTitle" column="session_title" />
+    <result property="sessionSdate" column="session_sdate" />
+    <result property="sessionEdate" column="session_edate" />
+    <result property="rsProgress" column="rs_progress" />
+    <result property="subId" column="sub_id" />
+    <result property="videoYcode" column="video_ycode" />
+    </resultMap>
+
+        <!-- 다른 필드들에 대한 매핑 추가 -->
+
+    <select id="selectRegSessionList" parameterType="map" resultMap="classroomHome">
+    <![CDATA[
+        SELECT
+            s.session_id,
+            s.session_snum,
+            s.session_title,
+            DATE_FORMAT(s.session_sdate, '%Y-%m-%d') AS session_sdate,
+            DATE_FORMAT(s.session_edate, '%Y-%m-%d') AS session_edate,
+            r.member_id,
+            r.sub_id,
+            COALESCE(r.rs_progress, 0.0) AS rs_progress,
+            v.video_ycode,
+            v.video_id
+        FROM
+            reg_session r
+                JOIN
+            session s ON r.session_id = s.session_id
+                JOIN
+            video v ON s.video_id = v.video_id
+        WHERE
+            r.member_id = #{memberId}
+          AND r.sub_id = #{subId}
+
+        UNION
+
+        SELECT
+            s.session_id,
+            s.session_snum,
+            s.session_title,
+            DATE_FORMAT(s.session_sdate, '%Y-%m-%d') AS session_sdate,
+            DATE_FORMAT(s.session_edate, '%Y-%m-%d') AS session_edate,
+            NULL AS member_id,
+            s.sub_id AS sub_id,
+            0.0 AS rs_progress,
+            v.video_ycode,
+            v.video_id
+        FROM
+            session s
+                JOIN
+            video v ON s.video_id = v.video_id
+        WHERE
+            s.sub_id = #{subId}
+          AND s.session_id NOT IN (
+            SELECT r.session_id
+            FROM reg_session r
+            WHERE r.member_id = #{memberId}
+              AND r.sub_id = #{subId}
+        )
+
+        ORDER BY
+            session_snum ASC;
+        ]]>
+    </select>
+</mapper>

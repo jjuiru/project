@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+    <html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>게시글 상세 화면</title>
+        <link rel="stylesheet" href="css/common/common.css" />
+        <link rel="stylesheet" href="css/common/sectionCss.css" />
+
+        <!-- 부트스트랩 CDN 추가 -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <link rel="stylesheet" th:href="@{/css/boardDetail.css}"/>
+        <!-- 분리된 CSS 파일 연결 -->
+    </head>
+    <body>
+    <header>
+        <!-- 상단 네비바 삽입 -->
+        <header th:replace="~{layout/header :: header}"></header>
+    </header>
+
+    <!-- aside와 main을 포함한 container1을 flexbox로 만들어 둘을 가로로 나란히 배치 -->
+    <div class="container1">
+
+
+        <aside>
+            <!-- 사이드바 삽입 -->
+            <nav th:replace="~{layout/boardside :: boardside}"></nav>
+        </aside>
+
+        <main style="height: 1000px;">
+
+            <div class="miniNavi">
+                <h1>게시글</h1>
+            </div>
+
+            <form id="frm" method="post">
+                <table class="board_detail">
+                    <caption>게시글 상세내용</caption>
+                    <tbody>
+                    <tr>
+                        <th scope="row">작성자</th>
+                        <td th:text="${post.memberName}"></td>
+                        <th scope="row">작성일</th>
+                        <td th:text="${#temporals.format(post.createdAt, 'yyyy-MM-dd HH:mm')}"></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">게시판</th>
+                        <td th:text="${post.boardName}"></td>
+                        <th scope="row">조회수</th>
+                        <td th:text="${post.views}"></td>
+                    </tr>
+
+                    <tr th:if="${post.updatedName != null and post.updatedName != ''}">
+                        <th scope="row">수정자</th>
+                        <td th:text="${post.updatedName}"></td>
+                        <th scope="row">수정일</th>
+                        <td th:text="${#temporals.format(post.updatedAt, 'yyyy-MM-dd HH:mm')}"></td>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">제목</th>
+                        <td colspan="3"><div id="title" name="title" readonly th:text="${post.title }"></div></td>
+                    </tr>
+                    <tr>
+                        <td colspan="4" class="view_text">
+                            <div title="내용" id="contents" name="contents" readonly th:utext="${post.content }"></div>
+                        </td>
+                    </tr>
+                    </tbody>
+
+                </table>
+                <input type="hidden" id="postId" name="postId" th:value="${post.postId }">
+            </form>
+
+            <div class="file_list">
+                <th:block th:each="file : ${post.attachments}">
+                    <p>
+                        <a th:href="@{/files/download/{idx}(idx=${file.attachedId})}"
+                            th:text="|${file.originalName} [${file.storagePath}]|"></a>
+                    </p>
+                </th:block>
+            </div>
+
+            <a th:href="@{'/' + ${boardName}}" class="btn btn-primary">목록으로</a>
+            <a href="#this" id="edit" class="btn btn-primary">수정하기</a>
+            <a href="#this" id="delete" class="btn btn-primary">삭제하기</a>
+
+            <!-- 수정 폼을 표시할 컨테이너 -->
+            <div id="form-container"></div>
+            <!-- 수정 폼 -->
+            <div id="edit-form" style="display: none;">
+                <form id="editForm">
+                    <!-- 수정 폼의 내용 입력 필드들을 여기에 추가 -->
+                    <input type="text" id="titleInput" name="titleInput" placeholder="제목">
+                    <textarea id="contentInput" name="contentInput" placeholder="내용"></textarea>
+                    <button type="button" id="saveEdit">저장</button>
+                    <button type="button" id="cancelEdit">취소</button>
+                </form>
+            </div>
+
+
+
+    </main>
+        <footer>
+            <!-- 푸터 삽입 -->
+            <footer th:replace="~{layout/footer :: footer}"></footer>
+        </footer>
+    </div>
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+
+            // 수정하기 버튼 클릭 시
+            $("#edit").on("click", function(){
+                var frm = $("#frm")[0];
+                frm.action = "/updateForm";
+                frm.submit();
+            });
+
+
+            $("#delete").on("click", function(){
+                var frm = $("#frm")[0];
+                frm.action = "/delete";
+                frm.submit();
+            });
+        });
+    </script>
+    </div>
+    </body>
+    </html>

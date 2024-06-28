@@ -1,0 +1,250 @@
+body,
+html {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: LatoWeb, Lato, Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+}
+ul:not(.xnpv-description ul, .k-editor ul) {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+a,
+a:link,
+a:visited {
+  color: #333;
+  text-decoration: none;
+}
+input,
+select {
+  border-radius: 5px;
+}
+button {
+  cursor: pointer;
+}
+.xn-common-white-btn {
+  display: inline-block;
+  padding: 5px 8px;
+  vertical-align: middle;
+  background-color: #fff;
+  border: 1px solid #c1c1c1;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 13px;
+  color: #333;
+  cursor: pointer;
+}
+.xn-common-white-btn:hover {
+  background-color: #d6d6d6;
+  border: 1px solid #b7b7b7;
+}
+.xn-common-gray-btn {
+  display: inline-block;
+  padding: 5px 10px;
+  vertical-align: middle;
+  background-color: #747474;
+  border: 1px solid #747474;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 13px;
+  color: #fff;
+  cursor: pointer;
+}
+.xn-common-gray-btn:hover {
+  background-color: #333;
+  border: 1px solid #333;
+}
+.xn-common-white-gray-btn {
+  display: inline-block;
+  padding: 5px 10px;
+  vertical-align: middle;
+  background-color: #fff;
+  border: 0;
+  text-decoration: none;
+  font-size: 14px;
+  color: #333;
+}
+.xn-common-white-gray-btn.enable {
+  cursor: pointer;
+}
+.xn-common-white-gray-btn.disable {
+  background-color: #fff;
+  color: #c5c5c5;
+}
+.xn-common-white-gray-btn.enable:hover {
+  background-color: #ebebeb;
+  border: 0;
+}
+.xn-common-white-gray-line-btn {
+  display: inline-block;
+  padding: 8px 10px;
+  background-color: #f9f9f9;
+  border: 1px solid #c7cdd1;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 14px;
+  color: #333;
+}
+.xn-common-white-gray-line-btn.enable {
+  cursor: pointer;
+}
+.xn-common-white-gray-line-btn.disable {
+  background-color: #ebebeb;
+  border: 1px solid #dfdfdf;
+  color: #c5c5c5;
+}
+.xn-common-white-gray-line-btn.enable:hover {
+  background-color: #dfdfdf;
+  border: 1px solid #bbc1c5;
+}
+.xn-common-dark-gray-btn {
+  display: inline-block;
+  padding: 8px 10px;
+  vertical-align: middle;
+  background-color: #464646;
+  border: 1px solid #333;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 14px;
+  color: #f6f6f6;
+  cursor: pointer;
+}
+.xn-common-dark-gray-btn.enable {
+  cursor: pointer;
+}
+.xn-common-dark-gray-btn.disable {
+  cursor: no-drop;
+  background-color: #ebebeb;
+  border: 1px solid #dfdfdf;
+  color: #c5c5c5;
+}
+.xn-common-dark-gray-btn:hover {
+  background-color: #333;
+  border: 1px solid #333;
+}
+.xn-common-green-btn {
+  display: inline-block;
+  padding: 5px 8px;
+  background-color: #fff;
+  border: 1px solid #00ac18;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 13px;
+  color: #00ac18;
+}
+.xn-common-green-btn:hover {
+  background-color: #d6d6d6;
+  border: 1px solid green;
+}
+.xn-common-blue-btn {
+  display: inline-block;
+  vertical-align: middle;
+  background-color: #286bfc;
+  border: 0;
+  border-radius: 5px;
+  font-size: 16px;
+  color: #fff;
+  cursor: pointer;
+}
+.xn-common-blue-btn:hover {
+  background-color: #1659ea;
+}
+.xn-common-blue-line-btn {
+  display: inline-block;
+  vertical-align: middle;
+  background-color: #fff;
+  border: 1px solid #286bfc;
+  border-radius: 5px;
+  font-size: 14px;
+  color: #286bfc;
+  cursor: pointer;
+}
+.xn-common-blue-line-btn:hover {
+  border: 1px solid #1659ea;
+  color: #1659ea;
+}
+.xn-common-white-line-btn {
+  display: inline-block;
+  vertical-align: top;
+  background: none;
+  border: 1px solid #c1c1c1;
+  border-radius: 5px;
+  font-size: 14px;
+  color: #fff;
+  cursor: pointer;
+}
+.xn-common-white-line-btn:hover {
+  background-color: hsla(0, 0%, 100%, 0.1);
+}
+.xn-common-title {
+  word-break: break-word;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  word-wrap: normal;
+}
+.xn-common-h2 {
+  font-size: 20px;
+  height: 30px;
+  padding-top: 5px;
+}
+.xn-common-h2,
+.xn-common-h3 {
+  font-weight: 700;
+  display: block;
+}
+.xn-common-h3 {
+  font-size: 18px;
+}
+.xn-common-h4 {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0 0 5px;
+}
+.xn-common-h5 {
+  font-size: 14px;
+  color: #666;
+}
+.xn-common-division-icon {
+  margin-left: 10px;
+  font-size: 14px;
+  display: inline-block;
+  vertical-align: top;
+  padding-top: 1px;
+}
+.xn-common-modal-btn-wrap {
+  border-top: 1px solid #ddd;
+  padding: 15px 10px 10px;
+  text-align: center;
+}
+.xn-common-modal-btn-wrap .xn-common-modal-btn {
+  padding: 5px 10px;
+  text-align: center;
+  height: 40px;
+  font-size: 15px;
+  cursor: pointer;
+  min-width: 80px;
+}
+.xn-common-modal-btn-wrap .xn-common-modal-btn-left {
+  margin-right: 15px;
+}
+.xn-common-modal-btn-wrap
+  .xn-common-white-btn.btn-primary:not(:disabled):not(.disabled).active,
+.xn-common-modal-btn-wrap
+  .xn-common-white-btn.btn-primary:not(:disabled):not(.disabled):active,
+.xn-common-modal-btn-wrap
+  .xn-common-white-btn.show
+  > .btn-primary.dropdown-toggle {
+  color: #333;
+  background-color: #fff;
+  border-color: #c1c1c1;
+}
+.xn-common-modal-btn-wrap .xn-common-white-btn.btn-primary:hover {
+  color: #333;
+}

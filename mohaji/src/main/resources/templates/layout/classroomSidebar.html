@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<th:block th:fragment="classroomSidebar">
+  <head>
+    <meta charset="UTF-8" />
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+    <meta name="language" content="ko" />
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE11" />
+    <meta
+      id="viewport"
+      name="viewport"
+      content="width=device-width, height=device-height, user-scalable=no, initial-scale=1, minimum-scale=1"
+    />
+
+    <title>sidebar</title>
+    <link type="text/css" rel="stylesheet" href="/css/common/sidebar.css" />
+    <link rel="stylesheet" type="text/css" href="/css/common/board.css" />
+    <link rel="stylesheet" type="text/css" href="/css/common/layer.css" />
+    <link rel="stylesheet" type="text/css" href="/css/common/basic.css" />
+  </head>
+  <body>
+    <div class="lnb">
+      <div class="title">
+        <h3 class="menu2" style="cursor: pointer" onclick="mnuUrlGo('')">
+          <span>강의실</span>
+        </h3>
+      </div>
+      <!-- menu_list -->
+      <div class="menu_list">
+        <ul>
+          <li class="depth">
+            <a> 과목정보 </a>
+            <ul>
+              <li>
+                <a href="/classroom/home"> 강의실 </a>
+              </li>
+              <li>
+                <a href=""> 학습현황 </a>
+              </li>
+            </ul>
+          </li>
+          <li class="depth">
+            <a> 과목 평가</a>
+            <ul>
+              <li>
+                <a href="/classroom/assignmentRoom"> 과제방 </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="depth">
+            <a>과목게시판</a>
+            <ul>
+              <li>
+                <a href=""> 과목공지사항 </a>
+              </li>
+              <li>
+                <a href="">과목자료실</a>
+              </li>
+              <li>
+                <a href=""> 과목Q&A </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <!-- //menu_list -->
+    </div>
+  </body>
+</th:block>
+</html>

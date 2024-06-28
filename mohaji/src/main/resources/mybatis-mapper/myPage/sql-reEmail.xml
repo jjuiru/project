@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.team1.mohaji.mapper.myPage.ReEmailMapper">
+
+    <!--ip업데이트-->
+    <update id="updateEmail">
+   <![CDATA[
+        UPDATE members
+        SET email = #{email}
+        WHERE member_id = #{memberId}
+        ]]>
+</update>
+
+    <select id="selectEmail" resultType="String">
+   <![CDATA[
+        SELECT email
+        FROM members
+        WHERE member_id = #{memberId}
+        ]]>
+</select>
+
+
+
+</mapper>

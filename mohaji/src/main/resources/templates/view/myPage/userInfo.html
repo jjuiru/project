@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- 부트스트랩 CSS 로드 -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- jQuery 로드 -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <!-- 부트스트랩 JS 로드 -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/common/common.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/common/sectionCss.css" />
+    <link rel="stylesheet" type="text/css" href="/css/myPage/regList.css" />
+<!--    <link rel="stylesheet" type="text/css" href="/css/common/board.css" />-->
+<!--    <link rel="stylesheet" type="text/css" href="/css/common/layer.css" />-->
+<!--    <link rel="stylesheet" type="text/css" href="/css/common/basic.css" />-->
+
+</head>
+<body>
+<header>
+    <!-- 상단 네비바 삽입 -->
+    <header th:replace="~{layout/header :: header}"></header>
+</header>
+
+<!-- aside와 main을 포함한 container1을 flexbox로 만들어 둘을 가로로 나란히 배치 -->
+<div class="container1">
+    <aside>
+        <!-- 사이드바 삽입 필요없을시 삭제 -->
+        <nav th:replace="~{layout/sidebar :: sidebar}"></nav>
+    </aside>
+
+    <main>
+        <!-- 세컨드 타이틀 필요없을시 삭제 -->
+        <div class="miniNavi">
+            <h1>내 정보</h1>
+        </div>
+        <!-- 컨텐츠 삽입 -->
+        <div class="sub_contents">
+            <form id="form1" name="form1" method="post" class="mt30" action="/myPage/ReEmail">
+                <input type="hidden" id="mode" name="mode" value=""/>
+                <div class="post_tit">회원수정</div>
+
+                <div class="sub_tit_my2">개인정보 수정<span class="sub_small_tit">* 는 필수 입력 입니다.</span></div>
+                <table class="sub_tbl04">
+                    <colgroup>
+                        <col style="width:25%" />
+                        <col style="width:75%" />
+                    </colgroup>
+                    <tr>
+                        <th>이름</th>
+                        <td><span th:text="${name}"></span></td>
+                    </tr>
+                    <tr>
+                        <th>아이디</th>
+                        <td><span th:text="${userId}"></span></td>
+                    </tr>
+                    <tr>
+                        <th>학번</th>
+                        <td><span th:text="${userNum}">20240522</span></td>
+                    </tr>
+                    <tr>
+                        <th>성별</th>
+                        <td>
+                            <label>여성</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>*E-Mail</th>
+                        <td>
+                            <input type="text" id="i_email1" name="bemail" class="join_form3" th:value="${bemail}"/>
+                            <span class="join_form_txt">@</span>
+                            <input type="text" id="i_email2" name="aemail" class="join_form4" th:value="${aemail}"/>
+                            <select class="join_form3" onchange="document.forms['form1']['i_email2'].value = this.value;if(!this.value) document.forms['form1']['i_email2'].focus();" style="margin-top:3px;">
+                                <option value="">-직접입력-</option>
+                                <option value="daum.net">daum.net</option>
+                                <option value="gmail.com">gmail.com</option>
+                                <option value="hotmail.com">hotmail.com</option>
+                                <option value="naver.com">naver.com</option>
+                                <option value="nate.com">nate.com</option>
+                                <option value="yahoo.co.kr">yahoo.co.kr</option>
+                            </select>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>정보 수신 동의</th>
+                        <td>
+                            <p class="join_txt1">* 학습 및 수강안내, 일정과 같은 주요한 정보를 수신합니다. (수신하지 않을 경우 관리자문의)</p>
+                        </td>
+                    </tr>
+                </table>
+                <div class="agree_btn_warp">
+                    <button type="submit" class="btn btn-primary btn-lg">수정</button>
+                </div>
+
+                </form>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <!-- 푸터 삽입 필요없을시 삭제 -->
+        <footer th:replace="~{layout/footer :: footer}"></footer>
+    </footer>
+</div>
+</body>
+</html>

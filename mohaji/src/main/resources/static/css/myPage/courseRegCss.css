@@ -1,0 +1,26 @@
+/* style.css */
+
+.toggle-area {
+    margin-bottom: 20px;
+    overflow: auto; /* 내용이 넘칠 경우 스크롤바 표시 */
+}
+
+.table th:nth-child(1),
+.table td:nth-child(1) {
+    width: 10%; /* 구분 칼럼의 너비 조정 */
+}
+
+.table th:nth-child(2),
+.table td:nth-child(2) {
+    width: 15%; /* 전공 칼럼의 너비 조정 */
+}
+
+.table th:nth-child(3),
+.table td:nth-child(3) {
+    width: 40%; /* 강의명 칼럼의 너비 조정 */
+}
+
+.table th:nth-child(4),
+.table td:nth-child(4) {
+    width: 10%; /* 차시수 칼럼의 너비 조정 */
+}

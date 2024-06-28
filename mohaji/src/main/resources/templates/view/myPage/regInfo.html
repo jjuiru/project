@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>강의 조회</title>
+
+    <link rel="stylesheet" type="text/css" href="/css/common/common.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/common/sectionCss.css" />
+    <link rel="stylesheet" type="text/css" href="/css/myPage/regList.css" />
+    <link rel="stylesheet" type="text/css" href="/css/common/commonGrid.css"/>
+
+    <!-- 부트스트랩 CDN 추가 -->
+    <link
+            rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <style>
+        .tui-grid-cell-selected,
+        .tui-grid-cell-selected:focus,
+        .tui-grid-cell.tui-grid-cell-current,
+        .tui-grid-cell.tui-grid-cell-current:focus {
+            background: transparent !important; /* 배경색 제거 */
+            box-shadow: none !important; /* 그림자 제거 */
+        }
+    </style>
+</head>
+<body>
+<header>
+    <!-- 상단 네비바 삽입 -->
+    <header th:replace="~{layout/header :: header}"></header>
+</header>
+
+<!-- aside와 main을 포함한 container1을 flexbox로 만들어 둘을 가로로 나란히 배치 -->
+<div class="container1">
+    <aside>
+        <!-- 사이드바 삽입 -->
+        <nav th:replace="~{layout/sidebar :: sidebar}"></nav>
+    </aside>
+
+    <main style="height: 1000px">
+
+        <!-- 컨텐츠 삽입 -->
+        <div class="miniNavi">
+            <h1>수강 이력</h1>
+        </div>
+        <div class="sub_contents">
+            <div class="post_tit">수강 현황</div>
+
+        <div id="grid"></div><br>
+        </div>
+
+        <div class="sub_contents">
+            <div class="post_tit">나의 수강이력</div>
+
+            <div id="grid2"></div>
+        </div>
+    </main>
+
+    <script th:inline="javascript">
+        /*<![CDATA[*/
+        var grid;
+        var memberId = /*[[${memberId}]]*/ '[]';
+        document.addEventListener("DOMContentLoaded", function () {
+            var regInfo = /*[[${regInfo}]]*/ '[]';
+            tui.Grid.applyTheme("stripe"); // 테마 적용
+            grid = new tui.Grid({
+                el: document.getElementById("grid"),
+                scrollX: false,
+                scrollY: false,
+                columns: [
+                    {
+                        header: "Id",
+                        name: "subId",
+                        align: 'center',
+                        hidden: true,
+                    },
+                    {
+                        header: "구분",
+                        name: "subType",
+                        align: 'center'
+                    },
+                    {
+                        header: "학과",
+                        name: "deptName",
+                        align: 'center',
+                        sortable: true,
+                    },
+                    {
+                        header: "과목",
+                        name: "subName",
+                        align: 'center',
+                        sortable: true,
+                        formatter: function (item) {
+                            const subName=item.row.subName
+                            const subId = item.row.subId;
+                            return `<a id="${subId}" href="#" class="subName">${subName}</a>`
+                        },
+                    },
+
+                    {
+                        header: "차시",
+                        name: "subScount",
+                        align: 'center'
+                    },
+                    {
+                        header: "학점",
+                        name: "subCredit",
+                        align: 'center'
+                    },
+                    {
+                        header: "신청시작일",
+                        name: "subRsdate",
+                        align: 'center'
+                    },
+                    {
+                        header: "신청마감일",
+                        name: "subRedate",
+                        align: 'center'
+                    },
+                    {
+                        header: "수강취소",
+                        name: "lectureRoom",
+                        align: 'center',
+                        formatter: function (item) {
+                            const subId = item.row.subId;
+                            const url = `/RegCancel?memberId=${memberId}&subId=${subId}`;
+                            return `<a class="regSubmit" href="${url}" >수강취소</a>`;
+                        },
+                    },
+                ],
+            });
+            grid.resetData(regInfo);  // 서버에서 전달된 데이터로 그리드 초기화
+        });
+    </script>
+
+    <script th:inline="javascript">
+        /*<![CDATA[*/
+        var grid2;
+        var memberId2 = /*[[${memberId}]]*/ '[]';
+        document.addEventListener("DOMContentLoaded", function () {
+            var regInfo2 = /*[[${regInfo2}]]*/ '[]';
+            tui.Grid.applyTheme("stripe"); // 테마 적용
+            grid2 = new tui.Grid({
+                el: document.getElementById("grid2"),
+                scrollX: false,
+                scrollY: false,
+                columns: [
+                    {
+                        header: "Id",
+                        name: "subId",
+                        align: 'center',
+                        hidden: true,
+                    },
+                    {
+                        header: "구분",
+                        name: "subType",
+                        align: 'center'
+                    },
+                    {
+                        header: "학과",
+                        name: "deptName",
+                        align: 'center',
+                        sortable: true,
+                    },
+                    {
+                        header: "과목",
+                        name: "subName",
+                        align: 'center',
+                        sortable: true,
+                        formatter: function (item) {
+                            const subName2=item.row.subName
+                            const subId2 = item.row.subId;
+                            return `<a id="${subId2}" href="#" class="subName">${subName2}</a>`
+                        },
+                    },
+
+                    {
+                        header: "차시",
+                        name: "subScount",
+                        align: 'center'
+                    },
+                    {
+                        header: "학점",
+                        name: "subCredit",
+                        align: 'center'
+                    },
+                    {
+                        header: "신청시작일",
+                        name: "subRsdate",
+                        align: 'center'
+                    },
+                    {
+                        header: "신청마감일",
+                        name: "subRedate",
+                        align: 'center'
+                    },
+                    {
+                        header: "수강상태",
+                        name: "rcStat",
+                        align: 'center',
+                    },
+                ],
+            });
+            grid2.resetData(regInfo2);  // 서버에서 전달된 데이터로 그리드 초기화
+        });
+    </script>
+    <script>
+        // 과목명을 클릭했을 때 팝업을 표시하는 이벤트 리스너 추가
+        document.getElementById('grid').addEventListener('click', function(event) {
+            const clickedElement = event.target;
+            // 클릭된 요소의 클래스 확인
+            if (clickedElement.classList.contains('subName')) {
+                event.preventDefault();
+                // 클릭된 과목명 id 속성을 가져와서 과목 ID를 추출
+                const subId1 = clickedElement.getAttribute('id');
+                fetchCourseDetail(subId1);
+            }
+        });
+
+        // 과목명을 클릭했을 때 팝업을 표시하는 이벤트 리스너 추가
+        document.getElementById('grid2').addEventListener('click', function(event) {
+            const clickedElement = event.target;
+            // 클릭된 요소의 클래스 확인
+            if (clickedElement.classList.contains('subName')) {
+                event.preventDefault();
+                // 클릭된 과목명 id 속성을 가져와서 과목 ID를 추출
+                const subId1 = clickedElement.getAttribute('id');
+                fetchCourseDetail(subId1);
+            }
+        });
+
+
+        document.getElementById('grid').addEventListener('click', function(event) {
+            if (event.target.classList.contains('regSubmit')) {
+                event.preventDefault();
+                const confirmResult = confirm('수강취소 하시겠습니까?');
+                if (confirmResult) {
+                    window.location.href = event.target.href;
+                }
+            }
+        });
+        document.getElementById('grid2').addEventListener('click', function(event) {
+            if (event.target.classList.contains('regSubmit')) {
+                event.preventDefault();
+                const confirmResult = confirm('수강취소 하시겠습니까?');
+                if (confirmResult) {
+                    window.location.href = event.target.href;
+                }
+            }
+        });
+
+        // 강의 상세 정보를 가져와서 모달에 표시하는 함수
+        function fetchCourseDetail(subId1) {
+            $.ajax({
+                url: '/courseDetail/' + subId1,
+                method: 'GET',
+                success: function(data) {
+                    $('#modal-department').text(data.deptName);
+                    $('#modal-professor').text(data.name);
+                    $('#modal-subjectName').text(data.subName);
+                    $('#modal-subjectType').text(data.subType);
+                    $('#modal-description').text(data.subDesc);
+                    $('#modal-credit').text(data.credit);
+                    $('#modal-curriculum').empty();
+                    data.sessionTitle.forEach(function(item) {
+                        $('#modal-curriculum').append('<li>' + item + '</li>');
+                    });
+                    $('#courseDetailModal').modal('show');
+                },
+                error: function(xhr, status, error) {
+                    console.error('에러 발생: ', error);
+                }
+            });
+        }
+    </script>
+    <script src="https://uicdn.toast.com/grid/latest/tui-grid.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <footer>
+        <!-- 푸터 삽입 -->
+        <footer th:replace="~{layout/footer :: footer}"></footer>
+    </footer>
+    <!-- 모달 팝업 HTML 추가 -->
+    <div class="modal fade" id="courseDetailModal" tabindex="-1" role="dialog" aria-labelledby="courseDetailModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="courseDetailModalLabel">강의 상세 정보</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><strong>학과 | </strong> <span id="modal-department"></span></li>
+                        <li class="list-group-item"><strong>교수 | </strong> <span id="modal-professor"></span></li>
+                        <li class="list-group-item"><strong>과목명 | </strong> <span id="modal-subjectName"></span></li>
+                        <li class="list-group-item"><strong>과목유형 | </strong> <span id="modal-subjectType"></span></li>
+                        <li class="list-group-item"><strong>과목설명 | </strong> <span id="modal-description"></span></li>
+                        <li class="list-group-item"><strong>커리큘럼 | </strong>
+                            <ol id="modal-curriculum"></ol>
+                        </li>
+                        <li class="list-group-item"><strong>취득 가능 학점:</strong> <span id="modal-credit"></span>점</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

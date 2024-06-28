@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>강의 조회</title>
+
+    <link rel="stylesheet" type="text/css" href="/css/common/common.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/common/sectionCss.css" />
+    <link rel="stylesheet" type="text/css" href="/css/myPage/regList.css" />
+    <link rel="stylesheet" type="text/css" href="/css/common/commonGrid.css"/>
+
+    <!-- 부트스트랩 CDN 추가 -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <style>
+      .tui-grid-cell-selected,
+      .tui-grid-cell-selected:focus,
+      .tui-grid-cell.tui-grid-cell-current,
+      .tui-grid-cell.tui-grid-cell-current:focus {
+        background: transparent !important; /* 배경색 제거 */
+        box-shadow: none !important; /* 그림자 제거 */
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <!-- 상단 네비바 삽입 -->
+      <header th:replace="~{layout/header :: header}"></header>
+    </header>
+
+    <!-- aside와 main을 포함한 container1을 flexbox로 만들어 둘을 가로로 나란히 배치 -->
+    <div class="container1">
+      <aside>
+        <!-- 사이드바 삽입 -->
+        <nav th:replace="~{layout/sidebar :: sidebar}"></nav>
+      </aside>
+
+      <main style="height: 1000px">
+        <!-- 컨텐츠 삽입 -->
+        <div class="miniNavi">
+          <h1>수강 강의</h1>
+        </div>
+        <div class="sub_contents">
+          <div class="post_tit">수강중인 강의</div>
+          <dl class="sub_my01" style="width:50%;float:left">
+            <dt>수강중인학점</dt>
+            <dd><span th:text= "${credit.progressing}"></span>학점</dd>
+          </dl>
+          <dl class="sub_my01" style="width:50%;float:right">
+            <dt>이수학점</dt>
+            <dd><span th:text="${credit.completion}"></span>학점</dd>
+          </dl>
+        </div>
+
+          <br />
+
+        <div id="grid"></div>
+      </main>
+
+      <script th:inline="javascript">
+        /*<![CDATA[*/
+        document.addEventListener("DOMContentLoaded", function () {
+          var regList = /*[[${regList}]]*/ '[]';
+          tui.Grid.applyTheme("stripe"); // 테마 적용
+          var grid = new tui.Grid({
+            el: document.getElementById("grid"),
+            scrollX: false,
+            scrollY: false,
+            columns: [
+              {
+                header: "과목 명",
+                name: "subName",
+                align: 'center'
+              },
+              {
+                header: "과목 유형",
+                name: "subType",
+                align: 'center',
+                sortable: true,
+              },
+              {
+                header: "학습 시작일",
+                name: "subSdate", // 수정: 시작 날짜와 끝 날짜를 개별적으로 표시합니다.
+                align: 'center',
+                sortable: true,
+              },
+              {
+                header: "학습 종료일", // 종료 날짜를 별도로 추가
+                name: "subEdate",
+                align: 'center',
+                sortable: true,
+              },
+              {
+                header: "총 차시",
+                name: "subScount",
+                align: 'center'
+              },
+              {
+                header: "진도율",
+                name: "rcProgress",
+                align: 'center'
+              },
+              {
+                header: "subId",
+                name: "subId",
+                align: 'center',
+                hidden: true
+              },
+              {
+                header: "memberId",
+                name: "memberId",
+                align: 'center',
+                hidden: true
+              },
+              {
+                header: "강의실",
+                name: "",
+                align: 'center',
+                formatter: function (item) {
+                  const subId = item.row.subId
+                  const memberId = item.row.memberId; // 각 항목의 memberId를 가져옵니다.
+                  const url = `/classroom/home?memberId=${memberId}&subId=${subId}`;
+                  return `<a href=${url}>이동</a>`;
+                },
+              },
+            ],
+          });
+          grid.resetData(regList); // 서버에서 전달된 데이터로 그리드 초기화
+        });
+        /*]]>*/
+      </script>
+      <script src="https://uicdn.toast.com/grid/latest/tui-grid.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+      <footer>
+        <!-- 푸터 삽입 -->
+        <footer th:replace="~{layout/footer :: footer}"></footer>
+      </footer>
+    </div>
+  </body>
+</html>

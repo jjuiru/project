@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GridTest</title>
+    <link rel="stylesheet" href="https://uicdn.toast.com/grid/latest/tui-grid.css"/>
+</head>
+<body>
+
+<div id="grid"></div>
+
+<button id="ajaxButton">버튼</button>
+<script>
+    function executeAjax() {
+        $.ajax({
+            url: "/test/getList",
+            method: "POST",
+            dataType: "JSON",
+            contentType: "application/json; charset=UTF-8",
+            success: function (result) {
+                console.dir(result);
+                tui.Grid.applyTheme('stripe'); // 테마 적용
+                var grid = new tui.Grid({
+                    el: document.getElementById('grid'),
+                    scrollX: false,
+                    scrollY: false,
+                    columns: [{
+                        header: '회원 번호',
+                        name: 'num'
+                    }, {
+                        header: '회원 아이디',
+                        name: 'id'
+                    }, {
+                        header: '비밀번호',
+                        name: 'password'
+                    }, {
+                        header: '이름',
+                        name: 'name',
+                        sortable: true,
+                        resizable: true,
+                        editor: 'text',
+                        filter: {
+                            type: 'text',
+                            showApplyBtn: true,
+                            showClearBtn: true
+                        }
+                    }, {
+                        header: '이메일',
+                        name: 'email'
+                    }, {
+                        header: '권한',
+                        name: 'role'
+                    },  {
+                        header: '링크',
+                        name: 'url',
+                        formatter: function(item) {
+                            const url = item.value;
+                            return `<a href="www.youtube.com/watch?v=${url}" target="_blank">${url}</a>`;
+                        }
+                    }]
+                });
+                grid.resetData(result);
+            }
+        });
+    }
+
+    document.getElementById("ajaxButton").addEventListener("click", executeAjax);
+</script>
+<script src="https://uicdn.toast.com/grid/latest/tui-grid.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</body>
+</html>

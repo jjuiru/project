@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<th:block th:fragment="boardside">
+  <head>
+    <meta charset="UTF-8" />
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+    <meta name="language" content="ko" />
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE11" />
+    <meta
+      id="viewport"
+      name="viewport"
+      content="width=device-width, height=device-height, user-scalable=no, initial-scale=1, minimum-scale=1"
+    />
+
+    <title>sidebar</title>
+    <link type="text/css" rel="stylesheet" href="/css/common/sidebar.css" />
+    <link rel="stylesheet" type="text/css" href="/css/common/board.css" />
+    <link rel="stylesheet" type="text/css" href="/css/common/layer.css" />
+    <link rel="stylesheet" type="text/css" href="/css/common/basic.css" />
+  </head>
+  <body>
+    <div class="lnb">
+      <div class="title">
+        <h3 class="menu2" style="cursor: pointer" onclick="mnuUrlGo('')">
+          <span>커뮤니티</span>
+        </h3>
+      </div>
+      <!-- menu_list -->
+      <div class="menu_list">
+        <ul>
+          <li class="depth">
+            <a> 학사 공지 </a>
+            <ul>
+              <li>
+                <a href="/notice"> 학사 공지 </a>
+              </li>
+            </ul>
+          </li>
+          <li class="depth">
+            <a> 과목 공지 </a>
+            <ul>
+              <li>
+                <a href="/assignment"> 과목 공지 </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="depth">
+            <a> QnA </a>
+            <ul>
+              <li>
+                <a href="/question"> 질문 게시판 </a>
+              </li>
+            </ul>
+          </li>
+          <li class="depth">
+            <a> 자유 게시판 </a>
+            <ul>
+              <li>
+                <a href="/resource"> 자유 게시판 </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <!-- //menu_list -->
+    </div>
+  </body>
+</th:block>
+</html>

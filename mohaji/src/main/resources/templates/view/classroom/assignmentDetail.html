@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+
+  <link rel="stylesheet" href="/css/common/common.css" />
+  <link rel="stylesheet" href="/css/common/sectionCss.css" />
+  <link rel="stylesheet" href="/css/common/basic.css" />
+  <link rel="stylesheet" href="/css/common/board.css" />
+  <link rel="stylesheet" href="/css/common/layer.css" />
+</head>
+<body>
+<div th:replace="~{layout/header :: header}"></div>
+
+<div class="container1">
+  <aside>
+    <nav th:replace="~{layout/classroomSidebar :: classroomSidebar}"></nav>
+  </aside>
+
+  <main>
+    <div class="miniNavi">
+      <h1>과제방</h1>
+    </div>
+
+    <div class="sub_contents">
+      <div class="sub_tit_my3">과제정보</div>
+      <table class="sub_tbl04">
+        <colgroup>
+          <col width="25%" />
+          <col width="*%" />
+        </colgroup>
+        <tr>
+          <th>과제명</th>
+          <td th:text="${asgn.asgnTitle}"></td>
+        </tr>
+        <tr>
+          <th>과제주제</th>
+          <td>
+            <div style="width:555px;word-wrap:break-word;">
+              <p><span th:text="${asgn.asgnDesc}" style="font-family: 돋움, dotum; font-size: 11pt;"></span></p>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th>제출기한</th>
+          <td th:text="${asgn.formattedAsgnSdate} + ' ~ ' + ${asgn.formattedAsgnDdate}"></td>
+        </tr>
+        <tr>
+          <th>주의사항</th>
+          <td>
+            <div style="width:555px;word-wrap:break-word;">
+              <p>
+                1. 과제 작성 시 참고한 자료가 있다면 출처를 명확히 기재해야 합니다. <br>
+                2. 과제 주제와 상관없는 내용, 또는 파일을 확인 할 수 없는 경우에는 점수 부여가 되지 않습니다. (0점 처리) <br>
+                3. 표절 또는 타인의 과제를 제출하는 등 부정행위로 적발 시 해당 학습자 모두 해당 과정의 성적은 0점(F학점)입니다. <br>
+              </p>
+            </div>
+          </td>
+        </tr>
+      </table>
+
+      <div class="sub_tit_my2">과제제출</div>
+      <form id="form1" name="form1" method="post" enctype="multipart/form-data">
+        <input type="hidden" id="asgnId" name="asgnId" th:value="${asgn.asgnId}"/>
+        <div th:if="${regAsgn != null}">
+          <input type="hidden" id="attachedId" name="attachedId" th:if="${regAsgn.attachedId != null}" th:value="${regAsgn.attachedId}"/>
+        </div>
+        <table class="sub_tbl04">
+          <colgroup>
+            <col width="25%" />
+            <col width="*%" />
+          </colgroup>
+          <tr>
+            <th>제목</th>
+            <td th:text="${asgn.asgnTitle}" class="study_form1"></td>
+          </tr>
+          <tr>
+            <th>내용</th>
+            <td th:if="${regAsgn != null}">
+              <textarea name="raContent" id="raContent1" class="study_form2" th:text="${regAsgn.raContent}"></textarea>
+            </td>
+            <td th:unless="${regAsgn != null}">
+              <textarea name="raContent" id="raContent" class="study_form2"></textarea>
+            </td>
+          </tr>
+          <tr>
+            <th>첨부파일</th>
+            <td colspan="3">
+              <div style="float:left">
+                <input type="file" id="attached_file" name="file" class="styled"/>
+              </div>
+              <div class="marginT03"></div>
+              <div style="clear:both;color:red">
+                * 새파일 등록시 기존 파일은 삭제됩니다.
+              </div>
+              <th:block th:if="${attachment != null}">
+              <div class="file_list">
+                  <p>
+                    <a th:href="@{/files/download/{idx}(idx=${attachment.attachedId})}"
+                       th:text="|${attachment.originalName} [${attachment.storagePath}]|"></a>
+                  </p>
+              </div>
+                </th:block>
+            </td>
+          </tr>
+        </table>
+      </form>
+
+      <div class="course_btn_warp margin_bot50">
+        <a href="javascript:history.back();">
+          <div class="course_cancle">목록으로</div>
+        </a>
+        <a href="javascript:void(0);">
+          <div class="course_plan2 margin_left10" id="submit-button">제출</div>
+        </a>
+      </div>
+    </div>
+  </main>
+
+
+ <div th:replace="~{layout/footer :: footer}"></div>
+</div>
+<script>
+  $(document).ready(function(){
+    $('#submit-button').click(function(){
+      var formData = new FormData($('#form1')[0]);
+      $.ajax({
+        url: '/classroom/submitAsgn',
+        type: 'POST',
+        processData: false,
+        contentType: false,
+        data: formData,
+        success: function(response) {
+          alert(response); // 서버의 응답 메시지를 alert로 표시
+          if (response === "과제가 성공적으로 제출되었습니다") {
+            history.back();
+          }
+        },
+        error: function(xhr, status, error) {
+          console.error('Error:', error);
+          alert('제출 실패');
+        }
+      });
+    });
+  });
+
+</script>
+</body>
+</html>

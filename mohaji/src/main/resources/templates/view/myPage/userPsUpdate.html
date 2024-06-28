@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>커뮤니티</title>
+    <link rel="stylesheet" href="/css/common/common.css" />
+    <link rel="stylesheet" href="/css/common/sectionCss.css" />
+    <!-- 부트스트랩 CDN 추가 -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+
+</head>
+<body>
+<header>
+    <!-- 상단 네비바 삽입 -->
+    <header th:replace="~{layout/header :: header}"></header>
+</header>
+
+<!-- aside와 main을 포함한 container1을 flexbox로 만들어 둘을 가로로 나란히 배치 -->
+<div class="container1">
+
+    <aside>
+<<<<<<<< HEAD:src/main/resources/templates/view/board/boardList.html
+        <!-- 사이드바 삽입 -->
+        <nav th:replace="~{layout/boardside :: boardside}"></nav>
+    </aside>
+
+    <main style="height: 1000px;">
+        <!-- 컨텐츠 삽입 -->
+========
+        <!-- 사이드바 삽입 필요없을시 삭제 -->
+        <nav th:replace="~{layout/sidebar :: sidebar}"></nav>
+    </aside>
+
+    <main>
+        <!-- 세컨드 타이틀 필요없을시 삭제 -->
+>>>>>>>> jjui:src/main/resources/templates/view/myPage/userPsUpdate.html
+        <div class="miniNavi">
+            <h1>게시판 목록</h1>
+        </div>
+<<<<<<<< HEAD:src/main/resources/templates/view/board/boardList.html
+========
+        <!-- 컨텐츠 삽입 -->
+>>>>>>>> jjui:src/main/resources/templates/view/myPage/userPsUpdate.html
+
+    </main>
+
+    <footer>
+<<<<<<<< HEAD:src/main/resources/templates/view/board/boardList.html
+        <!-- 푸터 삽입 -->
+========
+        <!-- 푸터 삽입 필요없을시 삭제 -->
+>>>>>>>> jjui:src/main/resources/templates/view/myPage/userPsUpdate.html
+        <footer th:replace="~{layout/footer :: footer}"></footer>
+    </footer>
+</div>
+</body>
+</html>

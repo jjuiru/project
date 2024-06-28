@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.team1.mohaji.mapper.myPage.MyPCMapper">
+
+    <resultMap id="myPC" type="com.team1.mohaji.dto.myPage.MyPCDto">
+        <id property="mipId" column="mip_id"/>
+        <result property="memberId" column="member_id"/>
+        <result property="mipIp" column="mip_ip"/>
+        <result property="mipName" column="mip_name"/>
+    </resultMap>
+
+    <!--ip 선택해온다-->
+    <select id="selectIP" parameterType="int"  resultMap="myPC">
+<![CDATA[
+SELECT *
+FROM member_ip
+WHERE member_id =#{memberId};
+        ]]>
+</select>
+
+    <!--ip업데이트-->
+    <update id="updatePCName">
+   <![CDATA[
+        UPDATE member_ip
+        SET mip_name = #{mipName}
+        WHERE member_id = #{memberId}
+          AND mip_ip = #{mipIp}
+        ]]>
+</update>
+
+    <!--ip삽입-->
+    <insert id="insertIP">
+    <![CDATA[
+        INSERT INTO member_ip (member_id, mip_ip, mip_Name)
+        VALUES (
+                   #{memberId},
+                   #{mipIp},
+                   #{mipName}
+               )
+        ]]>
+</insert>
+
+    <!--ip삭제하기-->
+    <delete id="deleteIP">
+    <![CDATA[
+DELETE from member_ip
+WHERE mip_id= #{mipId}
+        ]]>
+</delete>
+
+
+
+
+</mapper>

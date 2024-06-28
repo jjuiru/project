@@ -1,0 +1,224 @@
+/* 기존 코드와 동일 */
+ul:not(.xnpv-description ul, .k-editor ul) {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Header */
+#header {
+  min-width: 0;
+  height: auto;
+  z-index: 1000;
+  background-color: #fff;
+  font-size: 16px;
+  font-weight: 400;
+  color: #666;
+  line-height: 1.63;
+  letter-spacing: -0.03em;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  -webkit-text-size-adjust: none;
+  font-smoothing: antialiased;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+#header .navbar-static-top {
+  height: auto;
+}
+#header .navbar-static-top .container {
+  width: 100%;
+  height: auto;
+}
+#header .navbar-static-top .container .navbar-header {
+  height: auto;
+}
+#header .navbar-static-top .container .navbar-header:after {
+  display: block;
+  clear: both;
+  content: "";
+}
+
+/* logo */
+#header .xn-main-catalog-header-logo {
+  display: inline-block;
+  position: relative;
+  max-width: 100%;
+  width: 156px;
+  height: 85px;
+}
+#header .xn-main-catalog-header-logo.xn-main-catalog-header-logo-usg {
+  width: 134px;
+}
+#header .xn-main-catalog-header-logo-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  margin: auto auto auto 0;
+  height: 70px;
+}
+
+/* wrap */
+#header .navbar-static-top .container .xn-main-menu-wrap {
+  display: block;
+}
+#header .navbar-static-top .container .xn-main-menu-wrap .desktop {
+  display: block;
+  float: left;
+}
+#header .navbar-static-top .container .xn-main-menu-wrap .desktop:after {
+  display: block;
+  clear: both;
+  content: "";
+}
+#header
+.navbar-static-top
+.container
+.xn-main-menu-wrap
+.desktop
+.xn-header-menu-wrapper {
+  float: none;
+}
+
+/* nav */
+#header .xn-header-menu {
+  display: table;
+  height: auto;
+  table-layout: fixed;
+  width: 100%;
+  max-width: 700px;
+}
+.xn-main-catalog-header-logo-wrap {
+  height: 85px;
+}
+#header .xn-header-menu li {
+  display: table-cell;
+  vertical-align: middle;
+  position: relative;
+  text-align: center;
+  float: none;
+  width: auto;
+  font-size: 1em;
+}
+#header .xn-header-menu li:before {
+  display: block;
+  content: "";
+  position: absolute;
+  top: 43px;
+  left: 0;
+  width: 1px;
+  height: 17px;
+  margin-top: -8px;
+  background-color: #ddd;
+}
+#header .xn-header-menu li:first-child:before {
+  display: none;
+}
+
+#header .xn-header-menu li a {
+  display: block;
+  height: auto;
+  font-size: 1.1em;
+  font-weight: 500;
+  line-height: 85px;
+  color: #333;
+}
+
+/* subm */
+#header .xn-sub-menu-outer-wrapper {
+  position: fixed;
+  top: 85px;
+  margin: 0;
+  background: #1f54a2;
+}
+#header .navbar-static-top .container .xn-main-menu-wrap {
+  display: block;
+}
+#header
+.navbar-static-top
+.container
+.xn-main-menu-wrap
+.xn-sub-menu-wrapper.pull-right {
+  /*position: absolute;*/
+  position: fixed;
+  top: 0;
+  left: 30%; /* 'right: 50%'를 'left: 0'으로 변경 */
+  margin: 0; /* 마진을 제거 */
+  padding: 0 94px 0 0;
+  width: 810px;
+}
+
+/* 화면 크기가 768px 이하일 때 적용될 스타일 */
+@media screen and (max-width: 768px) {
+  #header .xn-main-menu-wrap .xn-sub-menu-wrapper.pull-right {
+    left: 0;
+    width: 100%; /* 요소의 크기를 화면에 맞게 조절 */
+    padding: 0; /* 요소의 패딩을 제거하거나 조절 */
+  }
+
+#header
+.navbar-static-top
+.container
+.xn-main-menu-wrap
+.xn-sub-menu-wrapper.pull-right.mypage
+.xn-sub-menu-item-wrapper {
+  width: 20%;
+}
+#header
+.navbar-static-top
+.container
+.xn-main-menu-wrap
+.xn-sub-menu-wrapper.pull-right:after {
+  display: block;
+  clear: both;
+  content: "";
+}
+#header .xn-sub-menu-item-wrapper {
+  float: left;
+  width: 25%;
+  padding: 5px 0;
+}
+#header .xn-sub-menu-item-wrapper li {
+  width: 100%;
+  font-size: 1em;
+  line-height: 1.5;
+  margin-left: 102px;
+  position: relative;
+}
+
+#header .xn-sub-menu-item-wrapper li a {
+  display: block;
+  padding: 0.3em 0;
+  color: #fff;
+}
+
+#header .xn-sub-menu-item-wrapper li a:hover {
+  text-decoration: none;
+  color: rgb(215, 235, 239);
+}
+
+#header
+.navbar-static-top
+.container
+.xn-main-menu-wrap
+.xn-sub-menu-outer-containar {
+  width: 1250px;
+  margin: 0 auto;
+}
+/* 파란색 세로길이조절 */
+#header
+.navbar-static-top
+.container
+.xn-main-menu-wrap
+.xn-sub-menu-outer-wrapper
+.xn-sub-menu-item-bg {
+  margin-top: 0px;
+  height: 170px;
+  display: inline-block;
+  width: 325px;
+  float: left;
+}
+}
