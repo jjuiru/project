@@ -1,0 +1,90 @@
+@charset "utf-8";
+
+/*	|||||||||||||||||||||||||||||||||||||||	*/
+/*	|||||||||||||             |||||||||||||
+	  |||||||||||||  index.css  |||||||||||||
+	  |||||||||||||             |||||||||||||	*/
+/*	|||||||||||||||||||||||||||||||||||||||	*/
+
+section { overflow: hidden; position: relative; width: 100%; }
+.inner_wrap_02 { width: 100%; max-width: 940px; margin: 0 auto; }
+
+
+/* +++++++++++++++++++ Mobile(start) +++++++++++++++++++ */
+@media screen and (max-width: 767px){
+
+
+
+
+}
+/* ++++++++++++++++++++ Mobile(end) ++++++++++++++++++++ */
+/*	||||||||||||||||||||||||||||||||||||||||||||||||||	*/
+/*	||||||||||||||||||               |||||||||||||||||
+	  ||||||||||||||||||   mohajipop   |||||||||||||||||
+	  ||||||||||||||||||               |||||||||||||||||	*/
+/*	||||||||||||||||||||||||||||||||||||||||||||||||||	*/
+/* +++++++++++++++++++ Tablet(start) +++++++++++++++++++ */
+@media screen and (min-width: 768px) and (max-width: 1024px){
+
+
+
+
+}
+/* ++++++++++++++++++++ Tablet(end) ++++++++++++++++++++ */
+/*	||||||||||||||||||||||||||||||||||||||||||||||||||	*/
+/*	||||||||||||||||||               |||||||||||||||||
+	  ||||||||||||||||||   mohajipop   |||||||||||||||||
+	  ||||||||||||||||||               |||||||||||||||||	*/
+/*	||||||||||||||||||||||||||||||||||||||||||||||||||	*/
+/* +++++++++++++++++++ Desktop(start) +++++++++++++++++++ */
+@media screen and (min-width: 1025px){
+
+
+	.btn_more[class~='_L'] { padding: 1.125em 3.0625em 1em; }
+
+	section.signup { margin-top: 80px; padding: 70px 0 220px; }
+	section.signup h2 { margin-bottom: 1.3888em; color: #0554f2; font-family: 'Pretendard-Bold'; font-size: 2.25em; font-weight: normal; text-align: center; }
+	section.signup .form_wrap { width: 748px; margin: 0 auto 50px; padding: 80px 96px; border: 1px solid #0554f2; border-radius: 20px; }
+	section.signup div > input { position: relative; width: 100%; padding: 0.8333em 5em 0.777em; border: 1px solid rgba(0, 0, 0, 0.1); font-family: 'Pretendard-Medium'; font-size: 1rem; outline: none; }
+	section.signup div > input + input { border-top: transparent; }
+	section.signup div > input:first-of-type { border-radius: 15px 15px 0 0; }
+	section.signup .account > input:last-of-type { border-radius: 0 0 15px 15px; }
+	section.signup .user_info { margin-top: 50px; }
+
+	section.signup #user_id { background: url('../images/ico_id.svg') no-repeat left 40px center; }
+	section.signup #user_pw { background: url('../images/ico_pw.svg') no-repeat left 41px center; }
+	section.signup #user_pw_confirm { background: url('../images/ico_pw.svg') no-repeat left 41px center; }
+	section.signup #user_name { background: url('../images/ico_id.svg') no-repeat left 40px center; }
+	section.signup #user_mail { background: url('../images/ico_mail.svg') no-repeat left 38.5px center; }
+	section.signup #user_phone { background: url('../images/ico_phone.svg') no-repeat left 42px center; }
+	section.signup #user_birth { background: url('../images/ico_cal_02.svg') no-repeat left 38.5px center; }
+	section.signup .user_gender { background: url('../images/ico_gender.svg') no-repeat left 42px center; }
+
+	section.signup .user_info input[type~='date']::-webkit-clear-button,section.signup .user_info #user_birth::-webkit-inner-spin-button { display: none; }
+	section.signup .user_info input[type~='date']::-webkit-calendar-picker-indicator { position: absolute; left: 0; top: 0; width: 100%; height: 100%; background: transparent; color: transparent; cursor: pointer; }
+	section.signup .user_info input[type~='date']::before { content: attr(data-placeholder); display: inline-block; position: absolute; left: 5em; width: calc(100% - 10em); /* padding: 0 5em; */ background: #fff; }
+	section.signup .user_info input[type~='date']:focus::before,section.signup .user_info input[type~='date']:valid::before { display: none; }
+	section.signup .user_info input[data-placeholder]::before { color: #777; }
+
+	section.signup .user_info .user_gender { display: inline-block; position: relative; width: 100%; padding: 0.5625em 1.25em 0.5625em 5em; border: 1px solid rgba(0, 0, 0, 0.1); border-top: transparent; border-radius: 0 0 15px 15px; color: #777; font-size: 1rem; }
+	section.signup .user_info .user_gender > p { position: absolute; left: 5em; top: 50%; transform: translateY(-50%); }
+	section.signup .user_info .user_gender label { display: inline-block; width: 172px; height: 32px; border: 1px solid rgba(0, 0, 0, 0.1); }
+	section.signup .user_info .user_gender label[for~='user_gender_man'] { margin-left: 5.125em; border-radius: 10px 0 0 10px; }
+	section.signup .user_info .user_gender label[for~='user_gender_woman'] { border-radius: 0 10px 10px 0; }
+	section.signup .user_info .user_gender input { width: 100%; height: 100%; font-family: 'Pretendard-Medium'; font-size: 0.8125em; text-align: center; cursor: pointer; appearance: none; -moz-appearance: none; -webkit-appearance: none; }
+	section.signup .user_info .user_gender input:checked { border: transparent; background: #0554f2; }
+	section.signup .user_info .user_gender input::before { content: attr(data-placeholder); display: inline-block; width: 100%; height: 100%; line-height: 32px; }
+	section.signup .user_info .user_gender input:checked::before { color: #fff; }
+	section.signup .user_info .user_gender label + label { border-left: transparent; }
+	section.signup .user_info .user_gender #user_gender_man { border-radius: 10px 0 0 10px; }
+	section.signup .user_info .user_gender #user_gender_woman { border-radius: 0 10px 10px 0; }
+
+	section.signup .checkbox { margin: 30px 0 50px; }
+	section.signup .checkbox label { padding: 0 0.5em 0 1.25em; }
+	section.signup .checkbox #agree_event { width: 20px; height: 20px; margin: -2px 10px 0 0; background: url('../images/ico_checkbox_static.svg') no-repeat; background-size: 100%; vertical-align: middle; appearance: none; -moz-appearance: none; -webkit-appearance: none; cursor: pointer; }
+	section.signup .checkbox #agree_event:checked { background: url(../images/ico_checkbox_checked.svg) no-repeat; background-size: 100%; }
+	section.signup .btn_more { margin-left: 50%; transform: translateX(-50%); font-family: 'Pretendard-Medium'; font-size: 0.9375em; cursor: pointer; }
+
+
+}
+/* ++++++++++++++++++++ Desktop(end) ++++++++++++++++++++ */

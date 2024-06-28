@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MOHAJIPOP!</title>
+  <link rel="stylesheet" type="text/css" href="css/reset.css">
+  <link rel="stylesheet" type="text/css" href="css/common.css">
+  <link rel="stylesheet" type="text/css" href="css/sub_mypage_mypopup.css">
+  <script src="js/common.js"></script>
+</head>
+<body>
+  <header>
+		<div class="inner_wrap">
+			<h1><a href="index.html">MOHAJIPOP!</a></h1>
+			<button id="btn_menu"><span class="blind">menu button</span></button>
+			<div class="utility">
+				<a href="sub_login.html"><span>로그인</span></a><!-- 
+			--><a href="sub_signup.html"><span>회원가입</span></a><!-- 
+			--><a href="sub_mypage.html"><span>마이페이지</span></a>
+			</div>
+		</div>
+		<nav>
+			<ul>
+				<li><a href="sub_popup.html">POPUP</a></li>
+				<li><a href="#">MAP</a></li>
+				<li><a href="#">EVENT</a></li>
+			</ul>
+		</nav>
+	</header>
+  <section class="visual">
+    <h2>MY PAGE</h2>
+  </section>
+	<div class="content">
+		<div class="conts_wrap">
+			<div class="inner_wrap">
+				<aside>
+					<div class="side_wrap">
+						<h2 class="blind">side navigation</h2>
+						<h3>MY PAGE</h3>
+						<nav>
+							<ul>
+								<li><a href="sub_mypage.html"><span>내 정보</span></a></li>
+								<li class="active"><a href="sub_mypage_mypopup.html"><span>나의 팝업</span></a></li>
+								<li><a href="sub_mypage_myreview.html"><span>리뷰 관리</span></a></li>
+								<li><a href="#"><span>스케줄</span></a></li>
+							</ul>
+						</nav>
+					</div>
+				</aside>
+				<div class="conts_wrap">
+					<section class="mypopup">
+						<h2>나의 팝업</h2>
+						<div class="form_wrap">
+							<form action="/action_page.php" method="post">
+								<fieldset>
+									<legend class="blind">my popup</legend>
+									<ul>
+										<li>
+											<input type="checkbox" name="my_popup" id="popup_01" value="1"><!-- 
+									 --><a href="sub_popup_li_01.html">
+												<div class="img_wrap">
+													<img src="../images/img_sub_mypage_mypopup_li_01.jpg" alt="my popup list 01 image">
+													<p>TWS: POP-UP STORE</p>
+												</div>
+											</a><!-- 
+									 --><button type="button" class="btn_delete"><span class="blind">delete button</span></button>
+										</li>
+										<li>
+											<input type="checkbox" name="my_popup" id="popup_02" value="1"><!-- 
+									 --><a href="sub_popup_li_01.html">
+												<div class="img_wrap">
+													<img src="../images/img_sub_mypage_mypopup_li_01.jpg" alt="my popup list 01 image">
+													<p>TWS: POP-UP STORE</p>
+												</div>
+											</a><!-- 
+									 --><button type="button" class="btn_delete"><span class="blind">delete button</span></button>
+										</li>
+										<li>
+											<input type="checkbox" name="my_popup" id="popup_03" value="1"><!-- 
+									 --><a href="sub_popup_li_01.html">
+												<div class="img_wrap">
+													<img src="../images/img_sub_mypage_mypopup_li_01.jpg" alt="my popup list 01 image">
+													<p>TWS: POP-UP STORE</p>
+												</div>
+											</a><!-- 
+									 --><button type="button" class="btn_delete"><span class="blind">delete button</span></button>
+										</li>
+										<li>
+											<input type="checkbox" name="my_popup" id="popup_04" value="1"><!-- 
+									 --><a href="sub_popup_li_01.html">
+												<div class="img_wrap">
+													<img src="../images/img_sub_mypage_mypopup_li_01.jpg" alt="my popup list 01 image">
+													<p>TWS: POP-UP STORE</p>
+												</div>
+											</a><!-- 
+									 --><button type="button" class="btn_delete"><span class="blind">delete button</span></button>
+										</li>
+									</ul>
+								</fieldset>
+								<input type="submit" value="삭제" class="btn_more _bg_R _color_R">
+							</form>
+						</div>
+					</section>
+				</div>
+			</div>
+		</div>
+	</div>
+  <footer>
+		<div class="inner_wrap clearfix">
+			<p class="c_name">MOHAJIPOP!</p>
+			<div class="footer_nav">
+				<a href="#"><strong>Pravicy Policy</strong></a><!-- 
+		 --><a href="#">Terms</a><!-- 
+		 --><a href="#">Family Site</a><!-- 
+		 --><a href="#">Site Map</a><!-- 
+		 --><a href="#" target="_blank">Contact</a>
+			</div>
+			<div class="address">
+				<address>서울 마포구 신촌로 176 중앙빌딩</address>
+				<address>Jungang Building, 176, Sinchon-ro, Mapo-gu, Seoul</address>
+			</div>
+			<p class="copy">ⓒ 2024. MOHAJIPOP. All rights reserved.</p>
+		</div>
+	</footer>
+</body>
+</html>

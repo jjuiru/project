@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MOHAJIPOP!</title>
+  <link rel="stylesheet" type="text/css" href="css/reset.css">
+  <link rel="stylesheet" type="text/css" href="css/common.css">
+  <link rel="stylesheet" type="text/css" href="css/sub_popup.css">
+  <script src="js/common.js"></script>
+</head>
+<body>
+  <header>
+		<div class="inner_wrap">
+			<h1><a href="index.html">MOHAJIPOP!</a></h1>
+			<button id="btn_menu"><span class="blind">menu button</span></button>
+			<div class="utility">
+				<a href="sub_login.html"><span>로그인</span></a><!-- 
+			--><a href="sub_signup.html"><span>회원가입</span></a><!-- 
+			--><a href="sub_mypage.html"><span>마이페이지</span></a>
+			</div>
+		</div>
+		<nav>
+			<ul>
+				<li><a href="sub_popup.html">POPUP</a></li>
+				<li><a href="#">MAP</a></li>
+				<li><a href="#">EVENT</a></li>
+			</ul>
+		</nav>
+	</header>
+  <section class="content">
+    <div class="inner_wrap_02">
+      <h2 class="blind">popup search section</h2>
+      <div class="search">
+        <h3 class="blind">search box</h3>
+        <form action="/action_page.php" method="get">
+          <div class="search_input_box">
+            <input type="search" name="insearch" id="insearch" maxlength="255" autocomplete="off" class="search_input" data-atcmp-element><!-- 
+         --><button type="submit" class="btn_search">
+              <span class="ico_btn_search">
+                <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="none"><path fill="#666" fill-rule="evenodd" d="M17.95 9.608a8.342 8.342 0 1 1-16.684 0 8.342 8.342 0 0 1 16.684 0Zm-2.1 6.95a9.342 9.342 0 1 1 .707-.707l6.083 6.082-.707.707-6.082-6.082Z" clip-rule="evenodd"/></svg>
+                <span class="blind">search button</span>
+              </span>
+            </button>
+          </div>
+        </form>
+      </div>
+      <div class="date terms">
+        <h3>날짜</h3>
+        <ul class="clearfix">
+          <li class="active"><button>오늘</button></li>
+          <li><button>+7일</button></li>
+          <li><button>+2주</button></li>
+          <li><button>직접설정</button></li>
+        </ul>
+      </div>
+      <div class="location terms">
+        <h3>지역</h3>
+        <ul class="clearfix">
+          <li class="active"><button>전체</button></li>
+          <li><button>서울특별시</button></li>
+          <li><button>경기도</button></li>
+          <li><button>인천광역시</button></li>
+          <li><button>부산광역시</button></li>
+          <li><button>대전광역시</button></li>
+        </ul>
+      </div>
+      <div class="ongoing">
+        <h3>진행중</h3>
+        <ul class="clearfix">
+          <li>
+            <div class="img_wrap">
+              <a href="sub_popup_li_01.html"><img src="images/img_sub_popup_li_01.jpg" alt="pop-up list image - tws: popup store"></a>
+            </div>
+            <div class="info_wrap">
+              <h4><a href="sub_popup_li_01.html">TWS:(투어스) 팝업스토어</a></h4>
+              <p class="local">서울특별시 영등포구</p>
+              <p class="when">24.03.27 - 24.04.28</p>
+            </div>
+          </li>
+          <li>
+            <div class="img_wrap">
+              <a href="#"><img src="images/img_sub_popup_li_02.jpg" alt="pop-up list image - SENKA LAND popup store"></a>
+            </div>
+            <div class="info_wrap">
+              <h4><a href="#">SENKA LAND 팝업스토어</a></h4>
+              <p class="local">서울특별시 성동구</p>
+              <p class="when">24.04.12 - 24.04.21</p>
+            </div>
+          </li>
+          <li>
+            <div class="img_wrap">
+              <a href="#"><img src="images/img_sub_popup_li_03.jpg" alt="pop-up list image - 진로골드 판타지아 popup store"></a>
+            </div>
+            <div class="info_wrap">
+              <h4><a href="#">서울(성수) 진로골드 판타지아</a></h4>
+              <p class="local">서울특별시 성동구</p>
+              <p class="when">24.04.01 - 24.04.30</p>
+            </div>
+          </li>
+          <li>
+            <div class="img_wrap">
+              <a href="#"><img src="images/img_sub_popup_li_04.jpg" alt="pop-up list image - 테라 popup store"></a>
+            </div>
+            <div class="info_wrap">
+              <h4><a href="#">테라 팝업스토어</a></h4>
+              <p class="local">서울특별시 마포구</p>
+              <p class="when">24.04.10 - 24.05.01</p>
+            </div>
+          </li>
+          <li>
+            <div class="img_wrap">
+              <a href="#"><img src="images/img_sub_popup_li_05.jpg" alt="pop-up list image - PLAVE 1st Anniversary popup store"></a>
+            </div>
+            <div class="info_wrap">
+              <h4><a href="#">PLAVE(플레이브) 1st Anniversary 팝업스토어</a></h4>
+              <p class="local">서울특별시 영등포구</p>
+              <p class="when">24.04.01 - 24.04.15</p>
+            </div>
+          </li>
+          <li>
+            <div class="img_wrap">
+              <a href="#"><img src="images/img_sub_popup_li_06.jpg" alt="pop-up list image - Teddy tales popup store"></a>
+            </div>
+            <div class="info_wrap">
+              <h4><a href="#">Teddy Tales 팝업스토어</a></h4>
+              <p class="local">서울특별시 성동구</p>
+              <p class="when">24.04.12 - 24.04.21</p>
+            </div>
+          </li>
+          <li>
+            <div class="img_wrap">
+              <a href="#"><img src="images/img_sub_popup_li_07.jpg" alt="pop-up list image - DIABLO popup store"></a>
+            </div>
+            <div class="info_wrap">
+              <h4><a href="#">DIABLO 팝업스토어</a></h4>
+              <p class="local">서울특별시 성동구</p>
+              <p class="when">24.04.01 - 24.04.30</p>
+            </div>
+          </li>
+          <li>
+            <div class="img_wrap">
+              <a href="#"><img src="images/img_sub_popup_li_08.jpg" alt="pop-up list image - Van Cleef & Arpels popup store"></a>
+            </div>
+            <div class="info_wrap">
+              <h4><a href="#">Van Cleef & Arpels</a></h4>
+              <p class="local">서울특별시 마포구</p>
+              <p class="when">24.04.10 - 24.05.01</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <footer>
+		<div class="inner_wrap clearfix">
+			<p class="c_name">MOHAJIPOP!</p>
+			<div class="footer_nav">
+				<a href="#"><strong>Pravicy Policy</strong></a><!-- 
+		 --><a href="#">Terms</a><!-- 
+		 --><a href="#">Family Site</a><!-- 
+		 --><a href="#">Site Map</a><!-- 
+		 --><a href="#" target="_blank">Contact</a>
+			</div>
+			<div class="address">
+				<address>서울 마포구 신촌로 176 중앙빌딩</address>
+				<address>Jungang Building, 176, Sinchon-ro, Mapo-gu, Seoul</address>
+			</div>
+			<p class="copy">ⓒ 2024. MOHAJIPOP. All rights reserved.</p>
+		</div>
+	</footer>
+</body>
+</html>

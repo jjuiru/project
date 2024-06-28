@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MOHAJIPOP!</title>
+  <link rel="stylesheet" type="text/css" href="css/reset.css">
+  <link rel="stylesheet" type="text/css" href="css/common.css">
+  <link rel="stylesheet" type="text/css" href="css/sub_mypage.css">
+  <script src="js/common.js"></script>
+</head>
+<body>
+  <header>
+		<div class="inner_wrap">
+			<h1><a href="index.html">MOHAJIPOP!</a></h1>
+			<button id="btn_menu"><span class="blind">menu button</span></button>
+			<div class="utility">
+				<a href="sub_login.html"><span>로그인</span></a><!-- 
+			--><a href="sub_signup.html"><span>회원가입</span></a><!-- 
+			--><a href="sub_mypage.html"><span>마이페이지</span></a>
+			</div>
+		</div>
+		<nav>
+			<ul>
+				<li><a href="sub_popup.html">POPUP</a></li>
+				<li><a href="#">MAP</a></li>
+				<li><a href="#">EVENT</a></li>
+			</ul>
+		</nav>
+	</header>
+  <section class="visual">
+    <h2>MY PAGE</h2>
+  </section>
+	<div class="content">
+		<div class="conts_wrap">
+			<div class="inner_wrap">
+				<aside>
+					<div class="side_wrap">
+						<h2 class="blind">side navigation</h2>
+						<h3>MY PAGE</h3>
+						<nav>
+							<ul>
+								<li class="active"><a href="sub_mypage.html"><span>내 정보</span></a></li>
+								<li><a href="sub_mypage_mypopup.html"><span>나의 팝업</span></a></li>
+								<li><a href="sub_mypage_myreview.html"><span>리뷰 관리</span></a></li>
+								<li><a href="#"><span>스케줄</span></a></li>
+							</ul>
+						</nav>
+					</div>
+				</aside>
+				<div class="conts_wrap">
+					<section class="info_edit">
+						<h2 class="blind">my information section</h2>
+						<div class="form_wrap">
+							<form action="/action_page.php" method="post">
+								<fieldset>
+									<legend class="blind">account</legend>
+									<div class="account">
+										<input type="text" name="user_id" id="user_id" placeholder="아이디" required>
+										<input type="password" name="user_pw" id="user_pw" placeholder="비밀번호" required>
+										<input type="password" name="user_pw_confirm" id="user_pw_confirm" placeholder="비밀번호 확인" required>
+									</div>
+								</fieldset>
+								<fieldset>
+									<legend class="blind">user information</legend>
+									<div class="user_info">
+										<input type="text" name="user_name" id="user_name" placeholder="이름" required>
+										<input type="email" name="user_mail" id="user_mail" placeholder="이메일" required>
+										<input type="tel" name="user_phone" id="user_phone" placeholder="핸드폰번호" required>
+										<input type="date" name="user_birth" id="user_birth" data-placeholder="생년월일" required>
+									</div>
+									<div class="checkbox">
+										<label for="agree_event"><input type="checkbox" name="agree_event" id="agree_event">이벤트 수신 동의</label>
+									</div>
+								</fieldset>
+								<input type="submit" value="수정" class="btn_more _color_01 _bg_01 _L">
+							</form>
+						</div>
+					</section>
+				</div>
+			</div>
+		</div>
+	</div>
+  <footer>
+		<div class="inner_wrap clearfix">
+			<p class="c_name">MOHAJIPOP!</p>
+			<div class="footer_nav">
+				<a href="#"><strong>Pravicy Policy</strong></a><!-- 
+		 --><a href="#">Terms</a><!-- 
+		 --><a href="#">Family Site</a><!-- 
+		 --><a href="#">Site Map</a><!-- 
+		 --><a href="#" target="_blank">Contact</a>
+			</div>
+			<div class="address">
+				<address>서울 마포구 신촌로 176 중앙빌딩</address>
+				<address>Jungang Building, 176, Sinchon-ro, Mapo-gu, Seoul</address>
+			</div>
+			<p class="copy">ⓒ 2024. MOHAJIPOP. All rights reserved.</p>
+		</div>
+	</footer>
+</body>
+</html>

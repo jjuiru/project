@@ -1,0 +1,62 @@
+@charset "utf-8";
+
+/*	|||||||||||||||||||||||||||||||||||||||	*/
+/*	|||||||||||||             |||||||||||||
+	  |||||||||||||  index.css  |||||||||||||
+	  |||||||||||||             |||||||||||||	*/
+/*	|||||||||||||||||||||||||||||||||||||||	*/
+
+section { overflow: hidden; position: relative; width: 100%; }
+
+/* +++++++++++++++++++ Mobile(start) +++++++++++++++++++ */
+@media screen and (max-width: 767px){
+
+
+
+
+}
+/* ++++++++++++++++++++ Mobile(end) ++++++++++++++++++++ */
+/*	||||||||||||||||||||||||||||||||||||||||||||||||||	*/
+/*	||||||||||||||||||               |||||||||||||||||
+	  ||||||||||||||||||   mohajipop   |||||||||||||||||
+	  ||||||||||||||||||               |||||||||||||||||	*/
+/*	||||||||||||||||||||||||||||||||||||||||||||||||||	*/
+/* +++++++++++++++++++ Tablet(start) +++++++++++++++++++ */
+@media screen and (min-width: 768px) and (max-width: 1024px){
+
+
+
+
+}
+/* ++++++++++++++++++++ Tablet(end) ++++++++++++++++++++ */
+/*	||||||||||||||||||||||||||||||||||||||||||||||||||	*/
+/*	||||||||||||||||||               |||||||||||||||||
+	  ||||||||||||||||||   mohajipop   |||||||||||||||||
+	  ||||||||||||||||||               |||||||||||||||||	*/
+/*	||||||||||||||||||||||||||||||||||||||||||||||||||	*/
+/* +++++++++++++++++++ Desktop(start) +++++++++++++++++++ */
+@media screen and (min-width: 1025px){
+
+
+	.btn_more[class~='_L'] { padding: 1.125em 3.0625em; }
+
+	section.login { margin-top: 80px; padding: 70px 0 220px; }
+	section.login h2 { margin-bottom: 1.3888em; color: #0554f2; font-family: 'Pretendard-Bold'; font-size: 2.25em; font-weight: normal; text-align: center; }
+	section.login .form_wrap { width: 460px; margin: 0 auto 50px; padding: 80px 76px; border: 1px solid #0554f2; border-radius: 20px; }
+	section.login .form_wrap input[id*='user_'] { position: relative; width: 100%; padding: 0.8333em 3.333em 0.777em; border: 1px solid rgba(0, 0, 0, 0.1); border-radius: 12px; background: none; color: #777; font-family: 'Pretendard-Medium'; font-size: 1.125em; outline: none; }
+	section.login .form_wrap #user_id { background: url('../images/ico_id.svg') no-repeat left 28px center; }
+	section.login .form_wrap #user_pw { background: url('../images/ico_pw.svg') no-repeat left 29px center; }
+	section.login .form_wrap input + input { margin-top: 8px; }
+	section.login .form_wrap label[for~='remember_id'] { display: inline-block; margin-top: 1.25em; padding: 0 0.5em 0 1.25em; font-family: 'Pretendard-Regular'; }
+	section.login .form_wrap #remember_id { width: 20px; height: 20px; margin-right: 10px; background: url('../images/ico_checkbox_static.svg') no-repeat; background-size: 100%; vertical-align: middle; appearance: none; -moz-appearance: none; -webkit-appearance: none; cursor: pointer; }
+	section.login .form_wrap #remember_id:checked { background: url('../images/ico_checkbox_checked.svg') no-repeat; background-size: 100%; }
+	section.login .form_wrap .btn_wrap { width: 100%; margin-top: 2.5em; text-align: center; }
+	section.login .form_wrap .btn_wrap .btn_more { width: 124px; padding: 0.9375em 0; text-align: center; }
+	section.login .form_wrap .btn_wrap input.btn_more { font-family: 'Pretendard-Medium'; font-size: 1rem; appearance: none; -moz-appearance: none; -webkit-appearance: none; cursor: pointer; }
+	section.login .form_wrap .btn_wrap input + a { margin-left: 20px;}
+
+	section.login > a.btn_more { margin-left: 50%; transform: translateX(-50%); }
+
+
+}
+/* ++++++++++++++++++++ Desktop(end) ++++++++++++++++++++ */

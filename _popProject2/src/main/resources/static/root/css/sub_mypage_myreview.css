@@ -1,0 +1,82 @@
+@charset "utf-8";
+
+/*	|||||||||||||||||||||||||||||||||||||||	*/
+/*	|||||||||||||             |||||||||||||
+	  |||||||||||||  index.css  |||||||||||||
+	  |||||||||||||             |||||||||||||	*/
+/*	|||||||||||||||||||||||||||||||||||||||	*/
+
+section { overflow: hidden; position: relative; width: 100%; }
+
+
+
+/* +++++++++++++++++++ Mobile(start) +++++++++++++++++++ */
+@media screen and (max-width: 767px){
+
+
+
+
+}
+/* ++++++++++++++++++++ Mobile(end) ++++++++++++++++++++ */
+/*	||||||||||||||||||||||||||||||||||||||||||||||||||	*/
+/*	||||||||||||||||||               |||||||||||||||||
+	  ||||||||||||||||||   mohajipop   |||||||||||||||||
+	  ||||||||||||||||||               |||||||||||||||||	*/
+/*	||||||||||||||||||||||||||||||||||||||||||||||||||	*/
+/* +++++++++++++++++++ Tablet(start) +++++++++++++++++++ */
+@media screen and (min-width: 768px) and (max-width: 1024px){
+
+
+
+
+}
+/* ++++++++++++++++++++ Tablet(end) ++++++++++++++++++++ */
+/*	||||||||||||||||||||||||||||||||||||||||||||||||||	*/
+/*	||||||||||||||||||               |||||||||||||||||
+	  ||||||||||||||||||   mohajipop   |||||||||||||||||
+	  ||||||||||||||||||               |||||||||||||||||	*/
+/*	||||||||||||||||||||||||||||||||||||||||||||||||||	*/
+/* +++++++++++++++++++ Desktop(start) +++++++++++++++++++ */
+@media screen and (min-width: 1025px){
+
+
+	.btn_more[class~='_L'] { padding: 0.75em 2.25em; }
+
+	.star { width: 20px; height: 20px; }
+
+	section.visual { height: 65.1vh; background: url('../images/img_sub_mypage_visual.jpg') no-repeat center; background-size: 100%; }
+	section.visual h2 { display: inline-block; position: absolute; left: 50%; top: calc(50% + 40px); transform: translate(-50%, -50%); color: #fff; font-family: 'Pretendard-Bold'; font-size: 2.928vw; font-weight: normal; }
+
+	div.conts_wrap > .inner_wrap { display: flex; justify-content: space-between; position: relative; margin-bottom: 100px; }
+
+	aside { position: sticky; position: -webkit-sticky; top: 95px; width: 268px; height: 450px; margin: 90px 0 0 10px; }
+	aside .side_wrap { width: 100%; padding: 40px 30px; border-radius: 10px; background: #fafafa; }
+	aside h3 { margin-bottom: 1.0476em; color: #0554f2; font-family: 'Pretendard-Bold'; font-size: 1.3125em; font-weight: normal; }
+	aside nav { padding-left: calc(15px - 0.5em); }
+	aside nav ul > li + li { margin-top: 0.5em; }
+	aside nav ul > li > a { display: inline-block; padding: 0 0.5em; }
+	aside nav ul > li > a:hover > span { border-bottom: 1px solid #000; }
+	aside nav ul > li.active > a > span { border-bottom: 1px solid #000; }
+
+	div.conts_wrap { flex: 1; }
+
+	section.myreview { margin-top: 80px; padding: 10px 0 220px 20px; }
+	section.myreview h2 { padding-left: 50px; color: #0554f2; font-family: 'Pretendard-Bold'; font-size: 2.25em; font-weight: normal; }
+	section.myreview .form_wrap { position: relative; width: 100%; padding: 100px 30px 0; }
+	section.myreview .form_wrap::after { content: ''; display: inline-block; position: absolute; left: 5%; top: 60px; width: 90%; height: 1px; background: rgba(0, 0, 0, 0.1); }
+	section.myreview .form_wrap ul > li { display: flex; align-items: center; column-gap: 20px; padding: 0 47px 0 30px; }
+	section.myreview .form_wrap ul > li + li { margin-top: 35px; }
+	section.myreview .form_wrap input[type~='checkbox'] { width: 20px; height: 20px; margin-top: 4px; margin-bottom: auto; background: url('../images/ico_checkbox_static.svg') no-repeat; background-size: 100%; filter: drop-shadow(0 0 0 #000); appearance: none; -moz-appearance: none; -webkit-appearance: none; cursor: pointer; }
+	section.myreview .form_wrap input[type~='checkbox']:checked { background: url('../images/ico_checkbox_checked.svg') no-repeat; }
+	section.myreview .form_wrap .score_wrap { flex: 1; display: flex; column-gap: 20px; }
+	section.myreview .form_wrap .score_wrap .score { padding-top: 4px; }
+	section.myreview .form_wrap .score_wrap .comment { flex: 1; }
+	section.myreview .form_wrap .score_wrap .comment p.user_id { font-size: 1.125em; }
+	section.myreview .form_wrap .score_wrap .comment p.user_review { font-family: 'Pretendard-Regular'; }
+	section.myreview .form_wrap .score_wrap .user_write_date { font-size: 0.875em; }
+	section.myreview .form_wrap ul > li .btn_delete { width: 40px; height: 40px; margin-left: 10px; background: url('../images/ico_trashbox.png') no-repeat; background-size: 100%; opacity: 0.2; }
+	section.myreview .form_wrap input[type~='submit'] { position: absolute; right: 76px; top: 10px; padding: 0.75em 1.25em 0.5em; font-family: 'Pretendard-Medium'; font-size: 0.8125em; cursor: pointer; }
+
+
+}
+/* ++++++++++++++++++++ Desktop(end) ++++++++++++++++++++ */

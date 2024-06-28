@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MOHAJIPOP!</title>
+  <link rel="stylesheet" type="text/css" href="css/reset.css">
+  <link rel="stylesheet" type="text/css" href="css/common.css">
+  <link rel="stylesheet" type="text/css" href="css/sub_login.css">
+  <script src="js/common.js"></script>
+</head>
+<body>
+  <header>
+		<div class="inner_wrap">
+			<h1><a href="index.html">MOHAJIPOP!</a></h1>
+			<button id="btn_menu"><span class="blind">menu button</span></button>
+			<div class="utility">
+				<a href="sub_login.html"><span>로그인</span></a><!-- 
+			--><a href="sub_signup.html"><span>회원가입</span></a><!-- 
+			--><a href="sub_mypage.html"><span>마이페이지</span></a>
+			</div>
+		</div>
+		<nav>
+			<ul>
+				<li><a href="sub_popup.html">POPUP</a></li>
+				<li><a href="#">MAP</a></li>
+				<li><a href="#">EVENT</a></li>
+			</ul>
+		</nav>
+	</header>
+  <section class="login">
+    <h2>LOGIN</h2>
+		<div class="form_wrap">
+			<form action="/action_page.php" method="post">
+				<fieldset>
+					<legend class="blind">login</legend>
+					<input type="text" name="user_id" id="user_id" placeholder="아이디">
+					<input type="password" name="user_pw" id="user_pw" placeholder="비밀번호">
+					<label for="remember_id"><input type="checkbox" name="remember_id" id="remember_id">아이디 기억하기</label>
+				</fieldset>
+				<div class="btn_wrap">
+					<input type="submit" value="LOGIN" class="btn_more _color_04 _bg_04"><!-- 
+			 --><a href="sub_signup.html" class="btn_more _color_04 _bg_04">SIGN UP</a>
+				</div>
+			</form>
+		</div>
+		<a href="index.html" class="btn_more _color_01 _bg_01 _L">MAIN</a>
+  </section>
+  <footer>
+		<div class="inner_wrap clearfix">
+			<p class="c_name">MOHAJIPOP!</p>
+			<div class="footer_nav">
+				<a href="#"><strong>Pravicy Policy</strong></a><!-- 
+		 --><a href="#">Terms</a><!-- 
+		 --><a href="#">Family Site</a><!-- 
+		 --><a href="#">Site Map</a><!-- 
+		 --><a href="#" target="_blank">Contact</a>
+			</div>
+			<div class="address">
+				<address>서울 마포구 신촌로 176 중앙빌딩</address>
+				<address>Jungang Building, 176, Sinchon-ro, Mapo-gu, Seoul</address>
+			</div>
+			<p class="copy">ⓒ 2024. MOHAJIPOP. All rights reserved.</p>
+		</div>
+	</footer>
+</body>
+</html>

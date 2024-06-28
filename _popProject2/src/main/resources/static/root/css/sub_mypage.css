@@ -1,0 +1,99 @@
+@charset "utf-8";
+
+/*	|||||||||||||||||||||||||||||||||||||||	*/
+/*	|||||||||||||             |||||||||||||
+	  |||||||||||||  index.css  |||||||||||||
+	  |||||||||||||             |||||||||||||	*/
+/*	|||||||||||||||||||||||||||||||||||||||	*/
+
+section { overflow: hidden; position: relative; width: 100%; }
+
+
+
+/* +++++++++++++++++++ Mobile(start) +++++++++++++++++++ */
+@media screen and (max-width: 767px){
+
+
+
+
+}
+/* ++++++++++++++++++++ Mobile(end) ++++++++++++++++++++ */
+/*	||||||||||||||||||||||||||||||||||||||||||||||||||	*/
+/*	||||||||||||||||||               |||||||||||||||||
+	  ||||||||||||||||||   mohajipop   |||||||||||||||||
+	  ||||||||||||||||||               |||||||||||||||||	*/
+/*	||||||||||||||||||||||||||||||||||||||||||||||||||	*/
+/* +++++++++++++++++++ Tablet(start) +++++++++++++++++++ */
+@media screen and (min-width: 768px) and (max-width: 1024px){
+
+
+
+
+}
+/* ++++++++++++++++++++ Tablet(end) ++++++++++++++++++++ */
+/*	||||||||||||||||||||||||||||||||||||||||||||||||||	*/
+/*	||||||||||||||||||               |||||||||||||||||
+	  ||||||||||||||||||   mohajipop   |||||||||||||||||
+	  ||||||||||||||||||               |||||||||||||||||	*/
+/*	||||||||||||||||||||||||||||||||||||||||||||||||||	*/
+/* +++++++++++++++++++ Desktop(start) +++++++++++++++++++ */
+@media screen and (min-width: 1025px){
+
+
+	.btn_more[class~='_L'] { padding: 0.75em 2.25em; }
+
+	.dir_btn[class~='_S'] > span { display: inline-block; width: 5px; height: 15px; }
+	.dir_btn[class~='_M'] > span { display: inline-block; width: 8px; height: 30px; }
+	.dir_btn[class~='_L'] > span { display: inline-block; width: 12px; height: 45px; }
+
+	section.visual { height: 65.1vh; background: url('../images/img_sub_mypage_visual.jpg') no-repeat center; background-size: 100%; }
+	section.visual h2 { display: inline-block; position: absolute; left: 50%; top: calc(50% + 40px); transform: translate(-50%, -50%); color: #fff; font-family: 'Pretendard-Bold'; font-size: 2.928vw; font-weight: normal; }
+
+	div.conts_wrap > .inner_wrap { display: flex; justify-content: space-between; position: relative; margin-bottom: 100px; }
+
+	aside { position: sticky; position: -webkit-sticky; top: 95px; width: 268px; height: 450px; margin: 90px 0 0 10px; }
+	aside .side_wrap { width: 100%; padding: 40px 30px; border-radius: 10px; background: #fafafa; }
+	aside h3 { margin-bottom: 1.0476em; color: #0554f2; font-family: 'Pretendard-Bold'; font-size: 1.3125em; font-weight: normal; }
+	aside nav { padding-left: calc(15px - 0.5em); }
+	aside nav ul > li + li { margin-top: 0.5em; }
+	aside nav ul > li > a { display: inline-block; padding: 0 0.5em; }
+	aside nav ul > li > a:hover > span { border-bottom: 1px solid #000; }
+	aside nav ul > li.active > a > span { border-bottom: 1px solid #000; }
+
+	div.conts_wrap { flex: 1; }
+
+	section.info_edit { margin-top: 80px; padding: 10px 0 220px 20px; }
+	section.info_edit h2 { margin-bottom: 1.3888em; color: #0554f2; font-family: 'Pretendard-Bold'; font-size: 2.25em; font-weight: normal; text-align: center; }
+	section.info_edit .form_wrap { width: 100%; padding: 10px 144px 0; }
+	section.info_edit .account { border: 1px solid #0554f2; border-radius: 15px; }
+	section.info_edit div > input { position: relative; width: 100%; padding: 0.8333em 5em 0.777em; border: 1px solid rgba(0, 0, 0, 0.1); font-family: 'Pretendard-Medium'; font-size: 1rem; outline: none; }
+	section.info_edit div > input + input { border-top: transparent; }
+	section.info_edit .account > input { border: transparent; }
+	section.info_edit .account > input + input { border-top: 1px solid rgba(0, 0, 0, 0.1); }
+	section.info_edit div > input:first-of-type { border-radius: 15px 15px 0 0; }
+	section.info_edit div > input:last-of-type { border-radius: 0 0 15px 15px; }
+	section.info_edit .user_info { margin-top: 50px; }
+
+	section.info_edit #user_id { background: url('../images/ico_id.svg') no-repeat left 40px center; }
+	section.info_edit #user_pw { background: url('../images/ico_pw.svg') no-repeat left 41px center; }
+	section.info_edit #user_pw_confirm { background: url('../images/ico_pw.svg') no-repeat left 41px center; }
+	section.info_edit #user_name { background: url('../images/ico_id.svg') no-repeat left 40px center; }
+	section.info_edit #user_mail { background: url('../images/ico_mail.svg') no-repeat left 38.5px center; }
+	section.info_edit #user_phone { background: url('../images/ico_phone.svg') no-repeat left 42px center; }
+	section.info_edit #user_birth { background: url('../images/ico_cal_02.svg') no-repeat left 38.5px center; }
+
+	section.info_edit .user_info input[type~='date']::-webkit-clear-button,section.info_edit .user_info #user_birth::-webkit-inner-spin-button { display: none; }
+	section.info_edit .user_info input[type~='date']::-webkit-calendar-picker-indicator { position: absolute; left: 0; top: 0; width: 100%; height: 100%; background: transparent; color: transparent; cursor: pointer; }
+	section.info_edit .user_info input[type~='date']::before { content: attr(data-placeholder); display: inline-block; position: absolute; left: 5em; width: calc(100% - 10em); /* padding: 0 5em; */ background: #fff; }
+	section.info_edit .user_info input[type~='date']:focus::before,section.info_edit .user_info input[type~='date']:valid::before { display: none; }
+	section.info_edit .user_info input[data-placeholder]::before { color: #777; }
+
+	section.info_edit .checkbox { margin: 30px 0 50px; }
+	section.info_edit .checkbox label { padding: 0 0.5em 0 1.25em; }
+	section.info_edit .checkbox #agree_event { width: 20px; height: 20px; margin: -2px 10px 0 0; background: url('../images/ico_checkbox_static.svg') no-repeat; background-size: 100%; vertical-align: middle; appearance: none; -moz-appearance: none; -webkit-appearance: none; cursor: pointer; }
+	section.info_edit .checkbox #agree_event:checked { background: url(../images/ico_checkbox_checked.svg) no-repeat; background-size: 100%; }
+	section.info_edit .btn_more { margin-left: 50%; transform: translateX(-50%); font-family: 'Pretendard-Medium'; font-size: 0.875em; cursor: pointer; }
+
+
+}
+/* ++++++++++++++++++++ Desktop(end) ++++++++++++++++++++ */

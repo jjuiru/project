@@ -1,0 +1,81 @@
+@charset "utf-8";
+
+/*	|||||||||||||||||||||||||||||||||||||||	*/
+/*	|||||||||||||             |||||||||||||
+	  |||||||||||||  index.css  |||||||||||||
+	  |||||||||||||             |||||||||||||	*/
+/*	|||||||||||||||||||||||||||||||||||||||	*/
+
+section { overflow: hidden; position: relative; width: 100%; }
+.inner_wrap_02 { width: 100%; max-width: 940px; margin: 0 auto; }
+
+
+/* +++++++++++++++++++ Mobile(start) +++++++++++++++++++ */
+@media screen and (max-width: 767px){
+
+
+
+
+}
+/* ++++++++++++++++++++ Mobile(end) ++++++++++++++++++++ */
+/*	||||||||||||||||||||||||||||||||||||||||||||||||||	*/
+/*	||||||||||||||||||               |||||||||||||||||
+	  ||||||||||||||||||   mohajipop   |||||||||||||||||
+	  ||||||||||||||||||               |||||||||||||||||	*/
+/*	||||||||||||||||||||||||||||||||||||||||||||||||||	*/
+/* +++++++++++++++++++ Tablet(start) +++++++++++++++++++ */
+@media screen and (min-width: 768px) and (max-width: 1024px){
+
+
+
+
+}
+/* ++++++++++++++++++++ Tablet(end) ++++++++++++++++++++ */
+/*	||||||||||||||||||||||||||||||||||||||||||||||||||	*/
+/*	||||||||||||||||||               |||||||||||||||||
+	  ||||||||||||||||||   mohajipop   |||||||||||||||||
+	  ||||||||||||||||||               |||||||||||||||||	*/
+/*	||||||||||||||||||||||||||||||||||||||||||||||||||	*/
+/* +++++++++++++++++++ Desktop(start) +++++++++++++++++++ */
+@media screen and (min-width: 1025px){
+
+
+	.btn_more[class~='_L'] { padding: 0.75em 2.25em; }
+
+	.dir_btn[class~='_S'] > span { display: inline-block; width: 5px; height: 15px; }
+	.dir_btn[class~='_M'] > span { display: inline-block; width: 8px; height: 30px; }
+	.dir_btn[class~='_L'] > span { display: inline-block; width: 12px; height: 45px; }
+
+	section.content { padding: 110px 0 180px; }
+	section.content .search_input_box { width: 100%; margin-bottom: 35px; padding: 9px 1.5em 9px 2.5em; border: 1px solid #ccc; border-radius: 999999px; background: #fff; }
+	section.content .search_input_box #insearch { width: 92%; height: 30px; border: none; font-family: 'Pretendard-Medium'; font-size: 1.25em; }	
+	section.content .search_input_box #insearch:focus { outline: none; }
+	section.content .search_input_box .btn_search { width: 8%; text-align: center; }
+	section.content .search_input_box .btn_search svg { position: relative; top: 3px; }
+
+	section.content .terms { display: flex; align-items: center; column-gap: 20px; padding: 15px 0; border-bottom: 1px solid rgba(0, 0, 0, 0.07); }
+	section.content .terms h3 { width: 8.085%; /* margin-right: 20px; */ font-family: 'Pretendard-Bold'; font-size: 1.125em; font-weight: normal; text-align: center; }
+	section.content .terms ul > li { float: left; }
+	section.content .terms ul > li > button { padding: 0.666em 1.866em; border: 1px solid #eee; border-radius: 99999px; color: #666; font-size: 0.9375em; text-align: center; }
+	section.content .terms ul > li:hover > button { border: 1px solid #0554f2; background: #0554f2; color: #fff; }
+	section.content .terms ul > li + li { margin-left: 20px; }
+
+	section.content .ongoing { display: flex; flex-direction: column; padding: 25px 0; }
+	section.content .ongoing h3 { margin-bottom: 2.222em; padding-left: 1.111em; font-family: 'Pretendard-Bold'; font-size: 1.125em; font-weight: normal; }
+	section.content .ongoing ul { display: flex; flex-wrap: wrap; row-gap: 20px; }
+	section.content .ongoing ul > li { display: flex; width: calc((100% - 20px) / 2); padding: 20px 15px 20px 20px; border-radius: 10px; background: #fafafa; }
+	section.content .ongoing ul > li:nth-of-type(2n) { margin-left: 20px; }
+	section.content .ongoing ul > li > div + div { padding-left: 20px; }
+	section.content .ongoing ul > li .img_wrap { flex: 0 0 37.3913%; }
+	section.content .ongoing ul > li .img_wrap > a { display: block; width: 100%; height: 100%; }
+	section.content .ongoing ul > li .img_wrap > a img { width: 100%; height: 100%; border-radius: 10px; object-fit: cover; }
+	section.content .ongoing ul > li .info_wrap { flex: 0 0 62.6087%; position: relative; padding-top: 15px; }
+	section.content .ongoing ul > li .info_wrap h4 { font-family: 'Pretendard-Bold'; font-size: 1.125em; font-weight: normal; line-height: 1.3; }
+	section.content .ongoing ul > li .info_wrap h4 + p { margin-top: 5px; }
+	section.content .ongoing ul > li .info_wrap p.local { position: relative; padding-left: 1.333em; color: #999; font-size: 0.9375em; }
+	section.content .ongoing ul > li .info_wrap p.local::before { content: ''; display: inline-block; position: absolute; left: 3px; top: 2px; width: 0.8em; height: 1.133em; background: url('../images/ico_location.svg'); background-size: 100%; }
+	section.content .ongoing ul > li .info_wrap p.when { position: absolute; right: 0; bottom: 0; font-size: 0.9375em; }
+
+
+}
+/* ++++++++++++++++++++ Desktop(end) ++++++++++++++++++++ */

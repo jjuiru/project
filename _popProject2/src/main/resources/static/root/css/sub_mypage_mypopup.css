@@ -1,0 +1,84 @@
+@charset "utf-8";
+
+/*	|||||||||||||||||||||||||||||||||||||||	*/
+/*	|||||||||||||             |||||||||||||
+	  |||||||||||||  index.css  |||||||||||||
+	  |||||||||||||             |||||||||||||	*/
+/*	|||||||||||||||||||||||||||||||||||||||	*/
+
+section { overflow: hidden; position: relative; width: 100%; }
+
+
+
+/* +++++++++++++++++++ Mobile(start) +++++++++++++++++++ */
+@media screen and (max-width: 767px){
+
+
+
+
+}
+/* ++++++++++++++++++++ Mobile(end) ++++++++++++++++++++ */
+/*	||||||||||||||||||||||||||||||||||||||||||||||||||	*/
+/*	||||||||||||||||||               |||||||||||||||||
+	  ||||||||||||||||||   mohajipop   |||||||||||||||||
+	  ||||||||||||||||||               |||||||||||||||||	*/
+/*	||||||||||||||||||||||||||||||||||||||||||||||||||	*/
+/* +++++++++++++++++++ Tablet(start) +++++++++++++++++++ */
+@media screen and (min-width: 768px) and (max-width: 1024px){
+
+
+
+
+}
+/* ++++++++++++++++++++ Tablet(end) ++++++++++++++++++++ */
+/*	||||||||||||||||||||||||||||||||||||||||||||||||||	*/
+/*	||||||||||||||||||               |||||||||||||||||
+	  ||||||||||||||||||   mohajipop   |||||||||||||||||
+	  ||||||||||||||||||               |||||||||||||||||	*/
+/*	||||||||||||||||||||||||||||||||||||||||||||||||||	*/
+/* +++++++++++++++++++ Desktop(start) +++++++++++++++++++ */
+@media screen and (min-width: 1025px){
+
+
+	.btn_more[class~='_L'] { padding: 0.75em 2.25em; }
+
+	.dir_btn[class~='_S'] > span { display: inline-block; width: 5px; height: 15px; }
+	.dir_btn[class~='_M'] > span { display: inline-block; width: 8px; height: 30px; }
+	.dir_btn[class~='_L'] > span { display: inline-block; width: 12px; height: 45px; }
+
+	section.visual { height: 65.1vh; background: url('../images/img_sub_mypage_visual.jpg') no-repeat center; background-size: 100%; }
+	section.visual h2 { display: inline-block; position: absolute; left: 50%; top: calc(50% + 40px); transform: translate(-50%, -50%); color: #fff; font-family: 'Pretendard-Bold'; font-size: 2.928vw; font-weight: normal; }
+
+	div.conts_wrap > .inner_wrap { display: flex; justify-content: space-between; position: relative; margin-bottom: 100px; }
+
+	aside { position: sticky; position: -webkit-sticky; top: 95px; width: 268px; height: 450px; margin: 90px 0 0 10px; }
+	aside .side_wrap { width: 100%; padding: 40px 30px; border-radius: 10px; background: #fafafa; }
+	aside h3 { margin-bottom: 1.0476em; color: #0554f2; font-family: 'Pretendard-Bold'; font-size: 1.3125em; font-weight: normal; }
+	aside nav { padding-left: calc(15px - 0.5em); }
+	aside nav ul > li + li { margin-top: 0.5em; }
+	aside nav ul > li > a { display: inline-block; padding: 0 0.5em; }
+	aside nav ul > li > a:hover > span { border-bottom: 1px solid #000; }
+	aside nav ul > li.active > a > span { border-bottom: 1px solid #000; }
+
+	div.conts_wrap { flex: 1; }
+
+	section.mypopup { margin-top: 80px; padding: 10px 0 220px 20px; }
+	section.mypopup h2 { padding-left: 50px; color: #0554f2; font-family: 'Pretendard-Bold'; font-size: 2.25em; font-weight: normal; }
+	section.mypopup .form_wrap { position: relative; width: 100%; padding: 100px 30px 0; }
+	section.mypopup .form_wrap::after { content: ''; display: inline-block; position: absolute; left: 5%; top: 60px; width: 90%; height: 1px; background: rgba(0, 0, 0, 0.1); }
+	section.mypopup .form_wrap ul > li { display: flex; align-items: center; column-gap: 30px; padding-left: 30px; }
+	section.mypopup .form_wrap ul > li + li { margin-top: 35px; }
+	section.mypopup .form_wrap input[type~='checkbox'] { width: 20px; height: 20px; background: url('../images/ico_checkbox_static.svg') no-repeat; background-size: 100%; filter: drop-shadow(0 0 0 #000); appearance: none; -moz-appearance: none; -webkit-appearance: none; cursor: pointer; }
+	section.mypopup .form_wrap input[type~='checkbox']:checked { background: url('../images/ico_checkbox_checked.svg') no-repeat; }
+	section.mypopup .form_wrap ul > li > a { display: inline-block; width: 74.194%; }
+	section.mypopup .form_wrap ul > li > a .img_wrap { position: relative; width: 100%; }
+	section.mypopup .form_wrap ul > li > a:hover .img_wrap::before { content: ''; display: inline-block; position: absolute; left: 0; top: 0; width: 100%; height: 100%; border-radius: 7px; background: rgba(0, 0, 0, 0.5); }
+	section.mypopup .form_wrap ul > li > a .img_wrap img { width: 100%; object-fit: cover; border-radius: 7px; }
+	section.mypopup .form_wrap ul > li > a .img_wrap p { visibility: hidden; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); color: #fff; font-size: 1.3125em; }
+	section.mypopup .form_wrap ul > li a:hover .img_wrap p { visibility: visible; }
+	section.mypopup .form_wrap ul > li .btn_delete { width: 40px; height: 40px; margin-left: 26px; background: url('../images/ico_trashbox.png') no-repeat; background-size: 100%; opacity: 0.2; }
+	section.mypopup .form_wrap input[type~='submit'] { position: absolute; right: 76px; top: 10px; padding: 0.75em 1.25em 0.5em; font-family: 'Pretendard-Medium'; font-size: 0.8125em; cursor: pointer; }
+
+
+}
+/* ++++++++++++++++++++ Desktop(end) ++++++++++++++++++++ */
