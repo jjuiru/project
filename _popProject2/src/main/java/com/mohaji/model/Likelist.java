@@ -17,6 +17,62 @@ public class Likelist {
 	private String endDay;
 	private String content;
 	
+	public Long getLikeCode() {
+		return likeCode;
+	}
+
+	public void setLikeCode(Long likeCode) {
+		this.likeCode = likeCode;
+	}
+
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
+	public String getPopCode() {
+		return popCode;
+	}
+
+	public void setPopCode(String popCode) {
+		this.popCode = popCode;
+	}
+
+	public String getPopName() {
+		return popName;
+	}
+
+	public void setPopName(String popName) {
+		this.popName = popName;
+	}
+
+	public String getStartDay() {
+		return startDay;
+	}
+
+	public void setStartDay(String startDay) {
+		this.startDay = startDay;
+	}
+
+	public String getEndDay() {
+		return endDay;
+	}
+
+	public void setEndDay(String endDay) {
+		this.endDay = endDay;
+	}
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
+
 	public Likelist() {};
 	
 	public Likelist(String userId, String popName, String startDay, String endDay) {

@@ -24,9 +24,7 @@ public class TestRunner implements ApplicationRunner {
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
 		Connection connection=dataSource.getConnection();
-		log.info("DBCP:"+dataSource.getClass());//사용하는 DBCP 타입 확인
-		log.info("Url:"+connection.getMetaData().getURL());
-		log.info("UserName:"+connection.getMetaData().getUserName());
+
 		
 		//  jdbctemplate	
 //		jdbcTemplate.execute("INSERT INTO artboard (pop_code, pop_name, start_day, end_day, content, img, rink, place)"

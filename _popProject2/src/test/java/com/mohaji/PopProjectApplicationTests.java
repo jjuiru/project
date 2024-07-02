@@ -90,14 +90,12 @@ class PopProjectApplicationTests {
 	@DisplayName("라이크셀렉트")
 	void selectAllLikelist() {
 		System.out.println(likelistMapper.selectAllLikelist());
-		log.info("likelist 모든 :{}",likelistMapper.selectAllLikelist());
 	}
 	@Order(3)
 	@Test
 	@DisplayName("라이크셀렉트유저")
 	void selectUserLikelist() {
 		System.out.println(likelistMapper.selectUserLikelist("admin"));
-		log.info("likelist 유저 :{}",likelistMapper.selectAllLikelist());
 	}
 //	@Order(1)
 //	@Test

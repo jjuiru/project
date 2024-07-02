@@ -59,7 +59,9 @@
     }
 %>    </div>
 	</header>
+	  <a style="max-width: 100%; background-color: #fff;display: flex; padding-top: 50px; flex-direction: column; align-items: center; margin-top: 5vw auto;"><h1>Gallery</h1></a>
 <figure id="image-container" style="max-width: 100%; background-color: #fff; display: flex; padding-top: 50px; justify-content: center; align-items: center; margin-top: 5vw auto; flex-wrap: wrap; gap: 20px;">
+
     <img src="../img/KakaoTalk_20240304_015245193_01.jpg" class="img-thumbnail" alt="..." style="width: 200px; height: auto; margin-bottom: 20px;">
     <img src="../img/KakaoTalk_20240304_015245193_02.jpg" class="img-thumbnail" alt="..." style="width: 200px; height: auto; margin-bottom: 20px;">
     <img src="../img/KakaoTalk_20240304_015245193_03.jpg" class="img-thumbnail" alt="..." style="width: 200px; height: auto; margin-bottom: 20px;">

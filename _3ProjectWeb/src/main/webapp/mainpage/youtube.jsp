@@ -8,11 +8,26 @@
 <title>모하지갤러리</title>
 <link rel="icon" href="favicon.ico" type="image/x-icon">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+<script src="https://www.youtube.com/iframe_api"></script>
 <script src="https://kit.fontawesome.com/c47106c6a7.js"
 	crossorigin="anonymous"></script>
 <link rel="stylesheet" href="../css/style.css">
 <script defer src="js/ie.js"></script>
 </head>
+<style>
+    .contents {
+        width: 50%;
+        height: 600px; /* Set the height to 600 pixels */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #player {
+        width: 100%;
+        height: 100%;
+    }
+</style>
 <body>
 	<header>
 		<div class="inner">
@@ -60,7 +75,13 @@
 %>    </div>
 	</header>
 	<figure style="max-width: 100%; background-color: #fff;display: flex; padding-top: 50px; flex-direction: column; align-items: center; margin-top: 5vw auto;">	
-<a><h1>준비중입니다.</h1></a>
+<a><h1>This month's exhibition</h1></a>
+<br><br>
+<div class="contents">
+    <iframe id="player" type="text/html" width="100%" height="100%"
+            src="https://www.youtube.com/embed/xb0Hzux7vw0?enablejsapi=1"
+            allowfullscreen frameborder="0"></iframe>
+</div>
 	</figure>
 	<footer>
 		<div class="inner">
