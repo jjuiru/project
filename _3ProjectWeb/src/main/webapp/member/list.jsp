@@ -1,4 +1,5 @@
 
+<%@page import="dto.ArticlePage"%>
 <%@page import="dto.Board"%>
 <%@page import="dao.BoardDao"%>
 <%@page import="dto.Member"%>
@@ -12,8 +13,19 @@
  boolean login = memberId == null ? false : true;
  BoardDao dao = BoardDao.getInstance();
  List<Board> list = dao.selectList(); // selectList() 호출해보기
+ String pageNoval = request.getParameter("pageNo");
+ int pageNo = 1;
+ if (pageNoval != null) {
+    pageNo = Integer.parseInt(pageNoval);
+ }
+
+ int total = dao.selectCount();
+ 
+ List<Board> list2 = dao.selectPage((((pageNo - 1) * 5) + 1), pageNo * 5);
+ ArticlePage articlePage = new ArticlePage(total, pageNo, 5, list2);
+ System.out.print(articlePage.getContent());
 %>
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -98,7 +110,7 @@ integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQI
   </thead>
   <tbody class="table-group-divider">
 
-   
+ <!-- admin 게시물 출력 -->  
 <% int count1 = 0; 
    for (Board board : list) {
     if ("admin".equals(board.getId())) {
@@ -117,26 +129,51 @@ integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQI
 <% 
 count1++;
 System.out.println(board.getNum()); } %>
-<!-- 일반 게시물 출력 -->
    <% } %>
-<!-- admin 게시물 출력 -->
+
+<!-- 일반 게시물 출력 -->
 <% int count = 1; %>
-<% for (Board normal : list) { 
-%>
-<tr>
-    <th style= "display: none;" scope="row"><%= normal.getNum() %></th>
-    <th scope="row"><%= count++ %></th>
-    <td><a href="searchAcc.jsp?id=<%= normal.getId() %>"><%= normal.getId() %></a></td>
-    <td><a href="view.jsp?num=<%= normal.getNum() %>&id=<%= normal.getId() %>"><%= normal.getTitle() %></a></td>
-    <td><%= normal.getRegtime() %></td>
-    <td><%= normal.getHits() %></td>
-</tr>
-<% }%>
+<% for (Board normal : articlePage.getContent()) { 
+	%>
+	<tr>
+	    <th style= "display: none;" scope="row"><%= normal.getNum() %></th>
+	    <th scope="row"></th>
+	    <td><a href="searchAcc.jsp?id=<%= normal.getId() %>"><%= normal.getId() %></a></td>
+	    <td><a href="view.jsp?num=<%= normal.getNum() %>&id=<%= normal.getId() %>"><%= normal.getTitle() %></a></td>
+	    <td><%= normal.getRegtime() %></td>
+	    <td><%= normal.getHits() %></td>
+	</tr>
+	<% }%>
+
+	<% 
+	    int startPage = articlePage.getStartPage();
+	    int endPage = articlePage.getEndPage();
+	    int totalPages = articlePage.getTotalPages();
+	%>
   </tbody>
 </table>
 <nav class="navbar navbar-expand-lg bg-body-tertiary" style="text-align: center;">
     <div class="container-fluid">
         <button type="button" class="btn btn-sm btn-outline-secondary" onclick="location.href='write.jsp'" style="float: right;">글쓰기</button>        
+<div>
+    <tr>
+        <td colspan="5">
+            <% if (startPage > 5) { %>
+                <a href="./list.jsp?pageNo=<%= startPage - 5 %>" style="margin: 0;">[이전]</a>
+            <% } %> 
+            <% 
+                for (int pNo = startPage; pNo <= endPage; pNo++) { 
+            %>
+                <a href="./list.jsp?pageNo=<%= pNo %>" style="margin: 0;">[<%= pNo %>]</a>
+            <% 
+                } 
+            %> 
+            <% if (endPage < totalPages) { %>
+                <a href="./list.jsp?pageNo=<%= startPage + 5 %>" style="margin: 0;">[다음]</a>
+            <% } %>
+        </td>
+    </tr>
+</div>  
         <form class="d-flex" role="search" action="searchList.jsp">
             <input class="form-control me-2" type="search" name="search" placeholder="내용검색" aria-label="Search">
             <button class="btn btn-sm btn-outline-secondary" type="submit">Search</button>

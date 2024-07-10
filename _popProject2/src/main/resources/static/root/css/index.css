@@ -89,7 +89,7 @@ section { overflow: hidden; position: relative; width: 100%; }
 	aside .favored > .dir_btn[class~='prev'] { position: absolute; left: 0; top: 0; width: 30px; height: 100%; text-align: center; }
 	aside .favored > .dir_btn[class~='next'] { position: absolute; right: 0; top: 0; width: 30px; height: 100%; text-align: center; }
 
-	aside .calendar { position: relative; width: 100%; height: 263px; margin-bottom: 15px; padding: 0 15px; }
+	aside .calendar { position: relative; width: 100%; height: 280px; margin-bottom: 15px; padding: 0 15px; }
 	aside .calendar > .cal_wrap { width: 100%; height: 100%; background: #fff; border: 1px solid #79A1F2; border-radius: 10px; }
 	aside .calendar .header_wrap { margin: 5px 0 15px; }
 	aside .calendar .header_wrap > .nav { display: flex; align-items: center; }
@@ -102,6 +102,7 @@ section { overflow: hidden; position: relative; width: 100%; }
 	aside .calendar .body_wrap > ul.days > li { z-index: 1; font-family: 'Pretendard-Regular'; font-size: 0.8125em; }
 	aside .calendar .body_wrap > ul.days > li.active { background: #0554f2; border-radius: 999999px; color: #fff; }
 	aside .calendar .body_wrap > ul.days > li.inactive { color: rgba(0, 0, 0, 0.3); }
+	aside .calendar .body_wrap > ul.days > li:hover {cursor: pointer; cursor: pointer; }
 
 	aside .search { position: relative; width: 100%; padding: 0 15px; }
 	aside .search .search_input_box { width: 100%; /* height: 30px; */ padding: 3px 0 5px; background: #fff; border: 1px solid #79A1F2; border-radius: 999999px; }

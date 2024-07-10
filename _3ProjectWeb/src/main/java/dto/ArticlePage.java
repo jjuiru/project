@@ -3,6 +3,7 @@ package dto;
 import java.util.List;
 
 public class ArticlePage {
+	
 	private int total;   //전체 게시글의 수 레코드수
 	private int currentPage; //현재 페이지 나타나는 페이지 수 > pageNum 의 값
 	private List<Board> content; //내용
@@ -27,10 +28,10 @@ public class ArticlePage {
 				this.totalPages++; //토탈 페이지가 넘어가기 때문에 +1을 해 준다
 			}
 			
-			int modVal =currentPage % 5; //현재 페이지의 번호를 하단 목록 번호의 갯수 
+			int modVal =currentPage % 5; //현재 페이지의 번호 = 하단 목록 번호의 갯수 
 			//현재 페이지가 1이라면 나머지 1 발생 , 2,3,4, 5일땐 0
-			startPage= currentPage/5*5+1; //0*5+1 =1 전부 
-			if(modVal==0) startPage -=5;
+			startPage= currentPage/5*5+1; //0*5+1 =1 전부  << 5 = 6, 10 = 11 이 되는 오류가 생김
+			if(modVal==0) startPage -=5;// 5의배수일 경우 발생하는 오류를 해결하기 위해 -5 처리를 해준다. 
 			
 			//startPage,endPage: 화면 하단에 보여줄 페이지 이동 링크의 시작 번호와 끝 번호
 			endPage= startPage +4;

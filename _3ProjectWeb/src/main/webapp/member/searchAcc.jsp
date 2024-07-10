@@ -123,7 +123,7 @@ System.out.println(board.getNum()); } %>
 %>
 <tr>
     <th style= "display: none;" scope="row"><%= normal.getNum() %></th>
-    <th scope="row"><%= count++ %></th>
+    <th scope="row"></th>
     <td><a href="searchAcc.jsp?id=<%= normal.getId() %>"><%= normal.getId() %></a></td>
     <td><a href="view.jsp?num=<%= normal.getNum() %>&id=<%= normal.getId() %>"><%= normal.getTitle() %></a></td>
     <td><%= normal.getRegtime() %></td>

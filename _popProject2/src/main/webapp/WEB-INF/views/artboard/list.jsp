@@ -62,14 +62,30 @@
 			<button type="submit">날짜로 검색</button>
 		</form>
 		<div class="date terms">
-			<h3>날짜</h3>
-			<ul class="clearfix">
-				<li class="active"><button>오늘</button></li>
-				<li><button>+7일</button></li>
-				<li><button>+2주</button></li>
-				<li><button>직접설정</button></li>
-			</ul>
+		    <h3>날짜</h3>
+		    <ul class="clearfix">
+		        <li class="active"><button type="button" onclick="setDateAndSubmit(0)">오늘</button></li>
+		        <li><button type="button" onclick="setDateAndSubmit(7)">+7일</button></li>
+		        <li><button type="button" onclick="setDateAndSubmit(14)">+2주</button></li>
+		    </ul>
 		</div>
+
+		<script>
+		function setDateAndSubmit(daysToAdd) {
+		    var dateInput = document.getElementById('findPop');
+		    var date = new Date();
+		    date.setDate(date.getDate() + daysToAdd);
+		    
+		    var year = date.getFullYear();
+		    var month = ('0' + (date.getMonth() + 1)).slice(-2); // Months are zero-based
+		    var day = ('0' + date.getDate()).slice(-2);
+
+		    var formattedDate = year + '-' + month + '-' + day;
+		    dateInput.value = formattedDate;
+
+		    document.getElementById('dateForm').submit();
+		}
+		</script>
 		<div class="location terms">
 			<h3>지역</h3>
 			<ul class="clearfix">

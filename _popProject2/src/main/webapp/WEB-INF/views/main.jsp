@@ -55,7 +55,7 @@
 			<div class="info_wrap">
 				<p class="title">TWS:<br>POP-UP STORE</p>
 				<p class="desc">THE HYUNDAI STORE<br>B2 ICONIC SQUARE</p>
-				<a href="/view?popCode=a01;" class="btn_more _L _color_02 _bg_02">MORE</a>
+				<a href="/view?popCode=a01" class="btn_more _L _color_02 _bg_02">MORE</a>
 			</div>
 		</div>
 		<div class="slides prev" data-index="3">
@@ -63,7 +63,7 @@
 			<div class="info_wrap">
 				<p class="title">PLAVE<br>POP-UP STORE</p>
 				<p class="desc">THE HYUNDAI STORE<br>F5 FLOOR</p>
-				<a href="/view?popCode=a04;" class="btn_more _L _color_03 _bg_03">MORE</a>
+				<a href="/view?popCode=a04" class="btn_more _L _color_03 _bg_03">MORE</a>
 			</div>
 		</div>
 		<div class="pagination">
@@ -101,61 +101,101 @@
 						<button class="dir_btn next _M _bg_BK"><span><span class="blind">next button</span></span></button>
 					</div>
 					<div class="calendar">
-						<div class="cal_wrap">
-							<div class="header_wrap">
-								<div class="nav">
-									<button class="dir_btn prev _S _bg_BK"><span><span class="blind">prev button</span></span></button>
-									<p class="cur_month">4월</p>
-									<button class="dir_btn next _S _bg_BK"><span><span class="blind">next button</span></span></button>
-								</div>
-							</div>
-							<div class="body_wrap">
-								<ul class="weeks">
-									<li>일</li>
-									<li>월</li>
-									<li>화</li>
-									<li>수</li>
-									<li>목</li>
-									<li>금</li>
-									<li>토</li>
-								</ul>
-								<ul class="days">
-									<li class="inactive">31</li>
-									<li>1</li>
-									<li>2</li>
-									<li>3</li>
-									<li>4</li>
-									<li>5</li>
-									<li>6</li>
-									<li>7</li>
-									<li>8</li>
-									<li>9</li>
-									<li>10</li>
-									<li>11</li>
-									<li class="active">12</li>
-									<li>13</li>
-									<li>14</li>
-									<li>15</li>
-									<li>16</li>
-									<li>17</li>
-									<li>18</li>
-									<li>19</li>
-									<li>20</li>
-									<li>21</li>
-									<li>22</li>
-									<li>23</li>
-									<li>24</li>
-									<li>25</li>
-									<li>26</li>
-									<li>27</li>
-									<li>28</li>
-									<li>29</li>
-									<li>30</li>
-								</ul>
-							</div>
+						<div class="calendar">
+						    <div class="cal_wrap">
+						        <div class="header_wrap">
+						            <div class="nav">
+						                <button class="dir_btn prev _S _bg_BK"><span><span class="blind">prev button</span></span></button>
+						                <p class="cur_month"></p>
+						                <button class="dir_btn next _S _bg_BK"><span><span class="blind">next button</span></span></button>
+						            </div>
+						        </div>
+						        <div class="body_wrap">
+						            <ul class="weeks">
+						                <li>일</li>
+						                <li>월</li>
+						                <li>화</li>
+						                <li>수</li>
+						                <li>목</li>
+						                <li>금</li>
+						                <li>토</li>
+						            </ul>
+						            <ul class="days">
+						                <!-- 여기에 날짜를 추가할 예정 -->
+						            </ul>
+						        </div>
+						    </div>
 						</div>
-					</div>
-					<div class="search">
+
+						<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+						<script>
+						    $(document).ready(function() {
+						        var currentDate = new Date();
+						        var currentYear = currentDate.getFullYear();
+						        var currentMonth = currentDate.getMonth();
+
+						        // 초기 달력 렌더링
+						        renderCalendar(currentYear, currentMonth);
+
+						        // 이전 달과 다음 달 버튼 이벤트 처리
+						        $('.prev').click(function() {
+						            currentMonth--;
+						            if (currentMonth < 0) {
+						                currentMonth = 11;
+						                currentYear--;
+						            }
+						            renderCalendar(currentYear, currentMonth);
+						        });
+
+						        $('.next').click(function() {
+						            currentMonth++;
+						            if (currentMonth > 11) {
+						                currentMonth = 0;
+						                currentYear++;
+						            }
+						            renderCalendar(currentYear, currentMonth);
+						        });
+
+						        // 날짜를 동적으로 추가하는 함수
+						        function renderCalendar(year, month) {
+						            var daysList = $('.days');
+						            daysList.empty();
+
+						            var daysInMonth = new Date(year, month + 1, 0).getDate();
+						            var firstDay = new Date(year, month, 1).getDay();
+
+						            $('.cur_month').text((month + 1) + '월');
+
+						            // 1일 이전의 빈 칸 채우기
+						            for (var i = 0; i < firstDay; i++) {
+						                daysList.append('<li class="inactive"></li>');
+						            }
+
+						            // 날짜 채우기
+						            for (var day = 1; day <= daysInMonth; day++) {
+						                var listItem = $('<li>' + day + '</li>');
+						                daysList.append(listItem);
+
+						                // 오늘 날짜 표시하기
+						                var today = new Date();
+						                if (day === today.getDate() && month === today.getMonth() && year === today.getFullYear()) {
+						                    listItem.addClass('active');
+						                }
+
+						                // 날짜 클릭 이벤트 처리
+						                listItem.click(function() {
+						                    var selectedDate = $(this).text();
+						                    console.log('선택한 날짜:', selectedDate);
+
+						                    // 선택한 날짜를 URL 파라미터로 추가하여 서버로 전송 (예시: selectDate?date=2024-07-12)
+						                    var formattedDate = year + '-' + ('0' + (month + 1)).slice(-2) + '-' + ('0' + selectedDate).slice(-2);
+						                    window.location.href = 'selectDate?date=' + formattedDate;
+						                });
+						            }
+						        }
+						    });
+						</script>
+							<div class="search">
 						<h3 class="blind">search section</h3>
 						<form action="keyword" method="get">
 							<div class="search_input_box">

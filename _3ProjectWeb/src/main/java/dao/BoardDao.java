@@ -48,7 +48,7 @@ public class BoardDao { // 싱글턴 클래스
 			pstmt=conn.prepareStatement(sql);
 			ResultSet rs= pstmt.executeQuery();
 			if(rs.next()) {
-				int total= rs.getInt("total");
+				int total= rs.getInt(1);
 				return total;
 			}
 		} catch (SQLException e) {
@@ -65,6 +65,30 @@ public class BoardDao { // 싱글턴 클래스
 		
 	}
 	// -----------------------------------
+	public ArrayList<Board> selectPage(int startRow, int size) {
+	      ArrayList<Board> list2 = new ArrayList<Board>();
+	      String sql = "SELECT * FROM (SELECT rownum as rnum, b.num, b.title, b.content, TO_CHAR(b.regtime, 'YYYY-MM-DD') as regtime, b.hits, b.memberno, m.id, m.email, m.name FROM (SELECT * FROM board ORDER BY num DESC) b JOIN member m ON b.memberno = m.memberno) WHERE rnum BETWEEN ? AND ?";
+	      PreparedStatement pstmt;
+	      try {
+	         pstmt = conn.prepareStatement(sql);
+	         pstmt.setInt(1, startRow);
+	         pstmt.setInt(2, size);
+	         
+	         ResultSet rs = pstmt.executeQuery();
+
+	         while (rs.next()) {
+	            Board board = new Board(rs.getInt("num"), rs.getString("id"),rs.getString("title"),rs.getString("content"),
+	                  rs.getString("regtime"), rs.getInt("hits"), rs.getInt("memberno"));
+	            list2.add(board);
+	         }
+	      } catch (SQLException e) {
+	         e.printStackTrace();
+	      }
+	      return list2;
+	   }
+	
+	
+	
 	public ArrayList<Board> selectList() {
 		ArrayList<Board> list = new ArrayList<Board>();
 		// List는 인터페이스 타입으로 다형성을 사용하기 위해서 사용
