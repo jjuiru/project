@@ -1,19 +1,20 @@
 # 프로젝트 순서
 
-1. MOHAJI LMS(LMS 학습관리 사이트) : mohaji
-2. MOHAJI POP(팝업 스토어 정보 허브) : _popProject2
-3. MOHAJI GALLERY(전시회 홈페이지) : _3ProjectWeb
+1. MOHAJI LMS(LMS 학습관리 사이트) -팀 : mohaji
+2. MOHAJI POP(팝업 스토어 정보 허브) -팀 : _popProject2
+3. MOHAJI GALLERY(전시회 홈페이지) -개인 : _3ProjectWeb
 
 <br>
 <br>
 
-# 팀 프로젝트 소개 MOHAJI LMS(LMS 학습관리 사이트)
+# 1. MOHAJI LMS(LMS 학습관리 사이트)
 <br>
 비대면과 미니멀리즘 시대를 맞아, 시간과 장소에 구애받지 않는 학습 시스템의 필요성이 증가하고 있습니다.<br> 
 이러한 사항을 반영해  MOHAJI LMS 는 간편한 온라인 학습 관리 환경을 제공합니다.
 <br>
 
 # 사용기술
+<br>
 
 ![Java](https://img.shields.io/badge/java-%23FC4C02?style=for-the-badge&logo=java&logoColor=white) <!-- Java -->
 ![Spring Boot](https://img.shields.io/badge/Spring%20Boot-%236DB33F?style=for-the-badge&logo=springboot&logoColor=white) <!-- Spring Boot -->
@@ -51,12 +52,13 @@
 <br>
 <br>
 
-# 팀 프로젝트 소개 MOHAJI POP(팝업 스토어 정보 허브)
+# 2. MOHAJI POP(팝업 스토어 정보 허브)
 <br>
 체험형 문화 팝업 스토어의 인기에 따라, 사용자가 최신 팝업 스토어 소식을 쉽게 확인하고 검색할 수 있는 허브 웹사이트를 개발했습니다.
 <br>
 
 # 사용기술
+<br>
 
 ![Java](https://img.shields.io/badge/java-%23FC4C02?style=for-the-badge&logo=java&logoColor=white)
 ![Spring Boot](https://img.shields.io/badge/Spring%20Boot-2.7.18-brightgreen?style=for-the-badge)
@@ -83,12 +85,13 @@
 <br>
 <br>
 
-# 개인 프로젝트 소개 MOHAJI GALLERY(전시회 홈페이지)
+# 3. MOHAJI GALLERY(전시회 홈페이지)
 <br>
 이 전시회 커뮤니티 사이트는 전시회 정보를 제공하여 접근성을 높이고, 사용자들이 경험과 의견을 공유하며, 전시회 사진을 통해 시각적 즐거움을 누릴 수 있도록 만들었습니다.
 <br>
 
 # 사용기술
+<br>
 
 ![JDK](https://img.shields.io/badge/JDK-%23F7DF1E?style=for-the-badge&logo=java&logoColor=black)
 ![Oracle](https://img.shields.io/badge/Oracle-%23F80000?style=for-the-badge&logo=oracle&logoColor=white)
