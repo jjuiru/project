@@ -12,6 +12,14 @@
 
 # 사용기술
 
+![Java](https://img.shields.io/badge/java-%23FC4C02?style=for-the-badge&logo=java&logoColor=white) <!-- Java -->
+![Spring Boot](https://img.shields.io/badge/Spring%20Boot-%236DB33F?style=for-the-badge&logo=springboot&logoColor=white) <!-- Spring Boot -->
+![Thymeleaf](https://img.shields.io/badge/Thymeleaf-%23004B49?style=for-the-badge&logo=thymeleaf&logoColor=white) <!-- Thymeleaf -->
+![jQuery](https://img.shields.io/badge/jQuery-%23076EAA?style=for-the-badge&logo=jquery&logoColor=white) <!-- jQuery -->
+![MyBatis](https://img.shields.io/badge/MyBatis-%23D9E0E6?style=for-the-badge&logo=mybatis&logoColor=black) <!-- MyBatis -->
+![Lombok](https://img.shields.io/badge/Lombok-%231D5C63?style=for-the-badge&logo=lombok&logoColor=white) <!-- Lombok -->
+![Apache Tomcat](https://img.shields.io/badge/Apache%20Tomcat-%23F8DC75?style=for-the-badge&logo=apachetomcat&logoColor=black) <!-- Apache Tomcat -->
+
 <br>
 
 # 팀원 소개 
@@ -23,12 +31,14 @@
 
 # 시연영상
 
-  1. 기능 시연  
+1. 기능 시연
+    
 [![Demo Video](https://img.youtube.com/vi/9C7uTpKkMok/0.jpg)](https://www.youtube.com/watch?v=9C7uTpKkMok)
 
 <br>
 
-  2. 배포, 유지보수 시연  
+2. 배포, 유지보수 시연
+   
 [![Demo Video](https://img.youtube.com/vi/k2pO1S8fVMY/0.jpg)](https://www.youtube.com/watch?v=k2pO1S8fVMY)
 
 <br>
