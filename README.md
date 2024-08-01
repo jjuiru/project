@@ -29,6 +29,7 @@ https://youtu.be/Us_3IiR5SjQ
 # 프로젝트 소개 MOHAJI GALLERY(전시회 홈페이지)
 
 # 시연영상 
+[![Demo Video](https://img.youtube.com/vi/CcjLf-P96K4/0.jpg)](https://www.youtube.com/watch?v=CcjLf-P96K4)
 
 
 
