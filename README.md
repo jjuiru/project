@@ -4,9 +4,6 @@
 2. MOHAJI POP(팝업 스토어 정보 허브) : _popProject2
 3. MOHAJI GALLERY(전시회 홈페이지) : _3ProjectWeb
 
-시연 영상 모음
-https://youtube.com/playlist?list=PLDL9vJLJnX3vlcGrIScRIqUh-pkSCN328&si=OZXXtqqSZHrQ0FwU
-
 
 # 프로젝트 소개 MOHAJI LMS(LMS 학습관리 사이트)
 
@@ -19,7 +16,7 @@ https://youtube.com/playlist?list=PLDL9vJLJnX3vlcGrIScRIqUh-pkSCN328&si=OZXXtqqS
 
 
 2. 배포, 유지보수 시연
-[![Demo Video](https://img.youtube.com/vi/k2pO1S8fVMY/0.jpg)](https://www.youtube.com/watch?k2pO1S8fVMY)
+[![Demo Video](https://img.youtube.com/vi/k2pO1S8fVMY/0.jpg)](https://www.youtube.com/watch?v=k2pO1S8fVMY)
 
 # 프로젝트 소개 MOHAJI POP(팝업 스토어 정보 허브)
 
