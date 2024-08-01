@@ -9,7 +9,8 @@
 # 팀 프로젝트 소개 MOHAJI LMS(LMS 학습관리 사이트)
 비대면과 미니멀리즘 시대를 맞아, 시간과 장소에 구애받지 않는 학습 시스템의 필요성이 증가하고 있습니다.  
 이러한 사항을 반영해  MOHAJI LMS 는 간편한 온라인 학습 관리 환경을 제공합니다.
-![image](https://github.com/user-attachments/assets/d5239d04-8cbc-428d-a511-13c660c0e8fe)
+
+# 사용기술
 
 <br>
 
