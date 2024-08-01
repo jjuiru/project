@@ -19,7 +19,7 @@ https://youtube.com/playlist?list=PLDL9vJLJnX3vlcGrIScRIqUh-pkSCN328&si=OZXXtqqS
 
 
 2. 배포, 유지보수 시연
-[![Demo Video](https://img.youtube.com/vi/k2pO1S8fVMY/0.jpg)](https://www.youtube.com/watch?v=J4p_73-ucnlKr4-a)
+[![Demo Video](https://img.youtube.com/vi/k2pO1S8fVMY/0.jpg)](https://www.youtube.com/watch?k2pO1S8fVMY)
 
 # 프로젝트 소개 MOHAJI POP(팝업 스토어 정보 허브)
 
