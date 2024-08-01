@@ -15,9 +15,7 @@ https://youtube.com/playlist?list=PLDL9vJLJnX3vlcGrIScRIqUh-pkSCN328&si=OZXXtqqS
 # 시연영상
 
 1. 기능 시연
-<p align="center">
-  <iframe width="800" height="450" src="https://www.youtube.com/embed/xug09FRU7RS2vjXH" frameborder="0" allowfullscreen></iframe>
-</p>
+[![Demo Video](https://img.youtube.com/vi/xug09FRU7RS2vjXH/0.jpg)](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
 
 2. 배포, 유지보수 시연
 <p align="center">
