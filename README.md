@@ -21,15 +21,15 @@
 # 프로젝트 소개 MOHAJI POP(팝업 스토어 정보 허브)
 
 # 팀원 소개 
-
-# 팀원 소개 
+https://youtu.be/Us_3IiR5SjQ
+# 시연영상
+[![Demo Video](https://img.youtube.com/vi/Us_3IiR5SjQ/0.jpg)](https://www.youtube.com/watch?v=Us_3IiR5SjQ)
 
 
 # 프로젝트 소개 MOHAJI GALLERY(전시회 홈페이지)
 
-# 팀원 소개 
+# 시연영상 
 
-# 팀원 소개 
 
 
 
