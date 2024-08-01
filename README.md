@@ -5,11 +5,13 @@
 3. MOHAJI GALLERY(전시회 홈페이지) : _3ProjectWeb
 
 <br>
+<br>
 
 # 팀 프로젝트 소개 MOHAJI LMS(LMS 학습관리 사이트)
-
+<br>
 비대면과 미니멀리즘 시대를 맞아, 시간과 장소에 구애받지 않는 학습 시스템의 필요성이 증가하고 있습니다.<br> 
 이러한 사항을 반영해  MOHAJI LMS 는 간편한 온라인 학습 관리 환경을 제공합니다.
+<br>
 
 # 사용기술
 
@@ -24,12 +26,10 @@
 ![AWS RDS](https://img.shields.io/badge/AWS%20RDS-%23FF9900?style=for-the-badge&logo=amazon-aws&logoColor=white)
 ![Docker](https://img.shields.io/badge/Docker-%232496ED?style=for-the-badge&logo=docker&logoColor=white)
 ![GitHub Actions](https://img.shields.io/badge/GitHub%20Actions-%232671E5?style=for-the-badge&logo=github-actions&logoColor=white)
-
-
 <br>
 
 # 팀원 소개 
-
+<br>
 노승탁(팀장)<br>
 이지현(부팀장)<br>
 오혜빈(팀원)<br>
@@ -49,11 +49,11 @@
 [![Demo Video](https://img.youtube.com/vi/k2pO1S8fVMY/0.jpg)](https://www.youtube.com/watch?v=k2pO1S8fVMY)
 
 <br>
+<br>
 
 # 팀 프로젝트 소개 MOHAJI POP(팝업 스토어 정보 허브)
-
+<br>
 체험형 문화 팝업 스토어의 인기에 따라, 사용자가 최신 팝업 스토어 소식을 쉽게 확인하고 검색할 수 있는 허브 웹사이트를 개발했습니다.
-
 <br>
 
 # 사용기술
@@ -70,20 +70,22 @@
 ![AWS RDS](https://img.shields.io/badge/AWS%20RDS-%23FF9900?style=for-the-badge&logo=amazon-aws&logoColor=white)
 
 # 팀원 소개
-
+<br>
 이지현(백엔드)<br>
 정윤정(프론트엔드)
-
 <br>
 
 # 시연영상  
+<br>
+
 [![Demo Video](https://img.youtube.com/vi/Us_3IiR5SjQ/0.jpg)](https://www.youtube.com/watch?v=Us_3IiR5SjQ)
 
 <br>
+<br>
 
 # 개인 프로젝트 소개 MOHAJI GALLERY(전시회 홈페이지)
+<br>
 이 전시회 커뮤니티 사이트는 전시회 정보를 제공하여 접근성을 높이고, 사용자들이 경험과 의견을 공유하며, 전시회 사진을 통해 시각적 즐거움을 누릴 수 있도록 만들었습니다.
-
 <br>
 
 # 사용기술
@@ -95,6 +97,7 @@
 ![HTML](https://img.shields.io/badge/HTML-%23E34F26?style=for-the-badge&logo=html5&logoColor=white)
 ![Bootstrap](https://img.shields.io/badge/Bootstrap-%23563D7C?style=for-the-badge&logo=bootstrap&logoColor=white)
 
-
 # 시연영상  
+<br>
+
 [![Demo Video](https://img.youtube.com/vi/CcjLf-P96K4/0.jpg)](https://www.youtube.com/watch?v=CcjLf-P96K4)
