@@ -14,16 +14,12 @@ https://youtube.com/playlist?list=PLDL9vJLJnX3vlcGrIScRIqUh-pkSCN328&si=OZXXtqqS
 
 # 시연영상
 
-# 기능 시연
-
+1.기능 시연
 [![Demo Video](https://img.youtube.com/vi/9C7uTpKkMok/0.jpg)](https://www.youtube.com/watch?v=9C7uTpKkMok)
 
 
 2. 배포, 유지보수 시연
-<p align="center">
-  <iframe width="800" height="450" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
-</p>
-
+[![Demo Video](https://img.youtube.com/vi/k2pO1S8fVMY/0.jpg)](https://www.youtube.com/watch?v=J4p_73-ucnlKr4-a)
 
 # 프로젝트 소개 MOHAJI POP(팝업 스토어 정보 허브)
 
